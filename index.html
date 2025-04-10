@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#134E4A" />
+  <link rel="manifest" href="manifest.json">
+  <title>Songbook</title>
+  <style>
+    :root {
+      --primary-color: #134E4A;
+      --primary-light: #2D7D78;
+      --primary-dark: #0D3330;
+      --primary-hover: #1E635E;
+      --accent-color: #F59E0B;
+      --text-light: #F0FDFA;
+      --text-dark: #042F2E;
+      --background: #F0FDF4;
+      --background-alt: #E2F5EA;
+      --background-dark: #0F172A;
+      --text-dark-mode: #E2E8F0;
+      --background-dark-mode: #1E293B;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition-speed: 0.3s;
+    }
+    
+    .dark-mode {
+      --primary-color: #0D9488;
+      --primary-light: #14B8A6;
+      --background: var(--background-dark-mode);
+      --text-dark: var(--text-dark-mode);
+      --background-alt: #2D3748;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--background);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: var(--text-dark);
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+      overflow-x: hidden;
+    }
+    
+    .header {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color var(--transition-speed);
+    }
+    
+    .header-info {
+      flex: 1;
+    }
+    
+    .header .id {
+      font-weight: bold;
+      font-size: 14px;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    
+    .header .title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 4px;
+      transition: transform 0.2s;
+    }
+    
+    .btn {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 8px;
+    }
+    
+    .btn:active {
+      transform: scale(0.96);
+    }
+    
+    .btn:hover {
+      background: rgba(255,255,255,0.25);
+    }
+    
+    .btn-icon {
+      display: inline-flex;
+      margin-right: 6px;
+    }
+    
+    .header-controls {
+      display: flex;
+    }
+    
+    .search-container {
+      background-color: var(--primary-light);
+      padding: 14px 16px;
+      display: none;
+      transition: all 0.3s ease;
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    
+    .search-container.visible {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .search-container input {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: var(--text-light);
+      color: var(--text-dark);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.2s;
+    }
+    
+    .search-container input:focus {
+      outline: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    .content {
+      flex: 1;
+      padding: 24px;
+      font-weight: 500;
+      line-height: 1.6;
+      font-size: 17px;
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+      transition: opacity 0.3s;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .malayalam {
+      font-family: 'Noto Sans Malayalam', 'Segoe UI', sans-serif;
+    }
+    
+    .content p {
+      margin-bottom: 24px;
+      white-space: pre-line;
+    }
+    
+    .footer {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      display: flex;
+      justify-content: space-around;
+      padding: 12px;
+      position: sticky;
+      bottom: 0;
+      transition: background-color var(--transition-speed);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .footer-btn {
+      background: none;
+      border: none;
+      color: inherit;
+      font-size: 22px;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+    
+    .footer-btn:active {
+      transform: scale(0.92);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .footer-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .song-list, .settings-panel {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--background);
+      z-index: 20;
+      padding: 20px;
+      overflow-y: auto;
+      transition: transform 0.3s ease, opacity 0.3s;
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    
+    .song-list.visible, .settings-panel.visible {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--primary-light);
+    }
+    
+    .panel-header h2 {
+      color: var(--primary-color);
+      margin: 0;
+      font-size: 22px;
+    }
+    
+    .song-item {
+      padding: 14px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      background-color: var(--background-alt);
+      transition: background-color 0.2s, transform 0.2s;
+      box-shadow: var(--card-shadow);
+    }
+    
+    .song-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .song-item:active {
+      transform: translateY(0);
+    }
+    
+    .song-id {
+      font-weight: bold;
+      color: var(--primary-color);
+      min-width: 40px;
+    }
+    
+    .song-title {
+      flex: 1;
+    }
+    
+    .favorite-icon {
+      margin-left: 10px;
+      color: #9CA3AF;
+      font-size: 20px;
+      transition: color 0.2s, transform 0.2s;
+    }
+    
+    .favorite-icon.active {
+      color: var(--accent-color);
+      transform: scale(1.1);
+    }
+    
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--primary-color);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: background-color 0.2s;
+    }
+    
+    .close-btn:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--primary-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border-top-color: var(--primary-color);
+      animation: spin 1s linear infinite;
+      margin-bottom: 16px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .error {
+      color: #B91C1C;
+      text-align: center;
+      padding: 20px;
+      background-color: #FEE2E2;
+      border-radius: 8px;
+      margin: 20px 0;
+      box-shadow: var(--card-shadow);
+    }
+    
+    .settings-option {
+      padding: 16px;
+      background-color: var(--background-alt);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--card-shadow);
+    }
+    
+    .settings-option label {
+      font-weight: 500;
+    }
+    
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 52px;
+      height: 26px;
+    }
+    
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: var(--primary-color);
+    }
+    
+    input:focus + .slider {
+      box-shadow: 0 0 1px var(--primary-color);
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    
+    /* Swipe detection areas */
+    .swipe-area {
+      position: fixed;
+      top: 60px;
+      bottom: 74px;
+      width: 20%;
+      z-index: 5;
+      background: rgba(19, 78, 74, 0.1);
+      opacity: 0;
+      transition: opacity 0.3s;
+    } 
+    
+    .swipe-left {
+      left: 0;
+    }
+    
+    .swipe-right {
+      right: 0;
+    }
+
+    .swipe-area:hover {
+      opacity: 0.3;
+    }
+
+    
+    .font-size-controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+      gap: 12px;
+    }
+    
+    .font-btn {
+      background-color: var(--primary-light);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    .filter-options {
+      display: flex;
+      gap: 8px;
+      margin: 16px 0;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    
+    .filter-btn {
+      background-color: var(--background-alt);
+      border: 1px solid var(--primary-light);
+      border-radius: 20px;
+      padding: 6px 14px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .filter-btn.active {
+      background-color: var(--primary-light);
+      color: white;
+    }
+    
+    @media (min-width: 768px) {
+      .content {
+        padding: 32px;
+        font-size: 18px;
+      }
+      
+      .header .title {
+        font-size: 24px;
+      }
+      
+      .header {
+        padding: 20px;
+      }
+      
+      .swipe-area {
+        display: none; /* Hide swipe areas on larger screens */
+      }
+      
+      .song-item {
+        padding: 16px 20px;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="header">
+    <div class="header-info">
+      <div class="id" id="songId">001</div>
+      <div class="title" id="songTitle">Songbook</div>
+    </div>
+    <div class="header-controls">
+      <button class="btn" id="languageSwitch">
+        <span class="btn-icon">🌐</span>
+        <span id="languageText">ML</span>
+      </button>
+      <button class="btn" id="toggleFavorite">
+        <span class="btn-icon" id="favoriteIcon">☆</span>
+      </button>
+    </div>
+  </div>
+  
+  <div class="search-container" id="searchContainer">
+    <input type="text" id="searchInput" placeholder="Search by title or number...">
+  </div>
+  
+  <!-- Swipe areas for mobile -->
+  <div class="swipe-area swipe-left" id="swipeLeft"></div>
+  <div class="swipe-area swipe-right" id="swipeRight"></div>
+  
+  <div class="content" id="songContent">
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      <p>Loading songbook...</p>
+    </div>
+  </div>
+  
+  <div class="song-list" id="songList">
+    <div class="panel-header">
+      <h2>Song List</h2>
+      <button class="close-btn" id="closeListBtn">×</button>
+    </div>
+    
+    <div class="filter-options">
+      <button class="filter-btn active" data-filter="all">All Songs</button>
+      <button class="filter-btn" data-filter="favorites">Favorites</button>
+      <!-- Add more categories as needed -->
+    </div>
+    
+    <div id="listContainer"></div>
+  </div>
+  
+  <div class="settings-panel" id="settingsPanel">
+    <div class="panel-header">
+      <h2>Settings</h2>
+      <button class="close-btn" id="closeSettingsBtn">×</button>
+    </div>
+    
+    <div class="settings-option">
+      <label for="darkModeToggle">Dark Mode</label>
+      <label class="toggle-switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="settings-option">
+      <label>Font Size</label>
+      <div class="font-size-controls">
+        <button class="font-btn" id="decreaseFontBtn">A-</button>
+        <button class="font-btn" id="resetFontBtn">A</button>
+        <button class="font-btn" id="increaseFontBtn">A+</button>
+      </div>
+    </div>
+    
+    <div class="settings-option">
+      <label for="autoScrollToggle">Auto-Scroll</label>
+      <label class="toggle-switch">
+        <input type="checkbox" id="autoScrollToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="settings-option">
+      <label>App Version</label>
+      <span>1.0.1</span>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <button class="footer-btn" id="menuBtn">☰</button>
+    <button class="footer-btn" id="searchBtn">🔍</button>
+    <button class="footer-btn" id="settingsBtn">⚙️</button>
+  </div>
+
+  <script>
+    // Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').then(registration => {
+          console.log('ServiceWorker registration successful');
+        }).catch(err => {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+
+    let db;
+    const DB_NAME = 'SongDB';
+    const DB_VERSION = 5; // Incremented version for favorites support
+    const STORE_NAME = 'songs';
+    const FAVORITES_STORE = 'favorites';
+    const SETTINGS_STORE = 'settings';
+    
+    let currentLanguage = 'english'; // 'english' or 'malayalam'
+    let currentSongId = 1;
+    let currentFontSize = 17; // Base font size in px
+    let darkMode = false;
+    let autoScroll = false;
+    let favorites = new Set();
+    
+    // Touch handling variables
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+
+    request.onupgradeneeded = (event) => {
+      const db = event.target.result;
+      
+      // Create or update songs store
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+      }
+      
+      // Create favorites store if it doesn't exist
+      if (!db.objectStoreNames.contains(FAVORITES_STORE)) {
+        db.createObjectStore(FAVORITES_STORE, { keyPath: 'id' });
+      }
+      
+      // Create settings store if it doesn't exist
+      if (!db.objectStoreNames.contains(SETTINGS_STORE)) {
+        db.createObjectStore(SETTINGS_STORE, { keyPath: 'name' });
+      }
+      
+      const store = event.currentTarget.transaction.objectStore(STORE_NAME);
+      
+      // Create indexes if they don't exist
+      if (!store.indexNames.contains('title')) {
+        store.createIndex('title', 'title', { unique: false });
+      }
+      
+      if (!store.indexNames.contains('number')) {
+        store.createIndex('number', 'id', { unique: true });
+      }
+
+      // Add initial songs with bilingual lyrics
+      const songs = getInitialSongs();
+      
+      songs.forEach(song => {
+        store.put(song);
+      });
+      
+      console.log('Database upgrade complete, added', songs.length, 'songs');
+    };
+
+    request.onsuccess = (event) => {
+      db = event.target.result;
+      console.log('Database opened successfully');
+      
+      // Load saved settings
+      loadSettings().then(() => {
+        // Setup UI elements after settings are loaded
+        applyDarkMode(darkMode);
+        updateFontSize();
+      });
+      
+      // Load favorites
+      loadFavorites().then(() => {
+        // Verify we have songs and load the first one
+        checkDatabase().then(() => {
+          loadSong(1);
+        }).catch(err => {
+          console.error('Error checking database:', err);
+          showError('Failed to initialize songbook');
+        });
+      });
+      
+      // Setup UI event listeners
+      setupUI();
+    };
+
+    request.onerror = (event) => {
+      console.error('Database error:', event.target.error);
+      showError('Failed to open database. Please refresh the page.');
+    };
+
+    function loadSettings() {
+      return new Promise((resolve) => {
+        const tx = db.transaction(SETTINGS_STORE, 'readonly');
+        const store = tx.objectStore(SETTINGS_STORE);
+        
+        // Load dark mode setting
+        const darkModeReq = store.get('darkMode');
+        darkModeReq.onsuccess = () => {
+          if (darkModeReq.result) {
+            darkMode = darkModeReq.result.value;
+          }
+        };
+        
+        // Load font size setting
+        const fontSizeReq = store.get('fontSize');
+        fontSizeReq.onsuccess = () => {
+          if (fontSizeReq.result) {
+            currentFontSize = fontSizeReq.result.value;
+          }
+        };
+        
+        // Load language setting
+        const languageReq = store.get('language');
+        languageReq.onsuccess = () => {
+          if (languageReq.result) {
+            currentLanguage = languageReq.result.value;
+            updateLanguageButton();
+          }
+        };
+        
+        // Load auto-scroll setting
+        const scrollReq = store.get('autoScroll');
+        scrollReq.onsuccess = () => {
+          if (scrollReq.result) {
+            autoScroll = scrollReq.result.value;
+          }
+        };
+        
+        tx.oncomplete = () => {
+          resolve();
+        };
+        
+        tx.onerror = () => {
+          console.error('Error loading settings');
+          resolve(); // Resolve anyway to continue app initialization
+        };
+      });
+    }
+
+    function saveSettings(setting, value) {
+      const tx = db.transaction(SETTINGS_STORE, 'readwrite');
+      const store = tx.objectStore(SETTINGS_STORE);
+      
+      store.put({
+        name: setting,
+        value: value
+      });
+      
+      return new Promise((resolve, reject) => {
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+
+    function loadFavorites() {
+      return new Promise((resolve) => {
+        const tx = db.transaction(FAVORITES_STORE, 'readonly');
+        const store = tx.objectStore(FAVORITES_STORE);
+        const request = store.getAll();
+        
+        request.onsuccess = () => {
+          favorites = new Set(request.result.map(item => item.id));
+          resolve();
+        };
+        
+        request.onerror = () => {
+          console.error('Error loading favorites');
+          resolve(); // Resolve anyway to continue app initialization
+        };
+      });
+    }
+
+    function toggleFavorite(songId) {
+      const tx = db.transaction(FAVORITES_STORE, 'readwrite');
+      const store = tx.objectStore(FAVORITES_STORE);
+      
+      if (favorites.has(songId)) {
+        store.delete(songId);
+        favorites.delete(songId);
+      } else {
+        store.put({ id: songId });
+        favorites.add(songId);
+      }
+      
+      updateFavoriteButton(songId);
+    }
+
+    function updateFavoriteButton(songId) {
+      const icon = document.getElementById('favoriteIcon');
+      
+      if (favorites.has(songId)) {
+        icon.textContent = '★';
+        icon.style.color = 'var(--accent-color)';
+      } else {
+        icon.textContent = '☆';
+        icon.style.color = '';
+      }
+    }
+
+    function toggleDarkMode() {
+      darkMode = !darkMode;
+      applyDarkMode(darkMode);
+      saveSettings('darkMode', darkMode);
+    }
+
+    function applyDarkMode(enabled) {
+      if (enabled) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+      
+      document.getElementById('darkModeToggle').checked = enabled;
+    }
+
+    function updateFontSize() {
+      document.getElementById('songContent').style.fontSize = `${currentFontSize}px`;
+    }
+
+    function changeFontSize(amount) {
+      // Limit font size between 14 and 28px
+      currentFontSize = Math.max(14, Math.min(28, currentFontSize + amount));
+      updateFontSize();
+      saveSettings('fontSize', currentFontSize);
+    }
+
+    function resetFontSize() {
+      currentFontSize = 17;
+      updateFontSize();
+      saveSettings('fontSize', currentFontSize);
+    }
+
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === 'english' ? 'malayalam' : 'english';
+      updateLanguageButton();
+      
+      // Update the body class for Malayalam font
+      if (currentLanguage === 'malayalam') {
+        document.body.classList.add('malayalam');
+      } else {
+        document.body.classList.remove('malayalam');
+      }
+      
+      // Save language preference
+      saveSettings('language', currentLanguage);
+      
+      // Reload current song in new language
+      loadSong(currentSongId);
+    }
+
+    function updateLanguageButton() {
+      document.getElementById('languageText').textContent = 
+        currentLanguage === 'english' ? 'ML' : 'EN';
+    }
+
+    function toggleAutoScroll() {
+      autoScroll = !autoScroll;
+      saveSettings('autoScroll', autoScroll);
+      
+      if (autoScroll) {
+        startAutoScroll();
+      }
+    }
+
+    function startAutoScroll() {
+      if (!autoScroll) return;
+      
+      const content = document.getElementById('songContent');
+      const scrollHeight = content.scrollHeight;
+      const duration = scrollHeight * 30; // Adjust speed (higher = slower)
+      
+      let startTime = null;
+      const initialScrollTop = content.scrollTop;
+      
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        
+        const elapsed = timestamp - startTime;
+        const scrollProgress = Math.min(elapsed / duration, 1);
+        
+        content.scrollTop = initialScrollTop + (scrollHeight - content.clientHeight) * scrollProgress;
+        
+        if (scrollProgress < 1 && autoScroll) {
+          requestAnimationFrame(step);
+        }
+      }
+      
+      requestAnimationFrame(step);
+    }
+
+    function checkDatabase() {
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, 'readonly');
+        const store = tx.objectStore(STORE_NAME);
+        const countRequest = store.count();
+        
+        countRequest.onsuccess = () => {
+          if (countRequest.result > 0) {
+            console.log('Database contains', countRequest.result, 'songs');
+            resolve();
+          } else {
+            reject(new Error('Database is empty'));
+          }
+        };
+        
+        countRequest.onerror = () => {
+          reject(countRequest.error);
+        };
+      });
+    }
+
+    function getInitialSongs() {
+      // Sample songs with bilingual support - replace with your actual 170 songs
+      return [
+        {
+          id: 1,
+          title: 'Amazing Grace',
+          title_malayalam: 'അതിശയ കൃപ',
+          lyrics: `Amazing grace, how sweet the sound
+That saved a wretch like me
+I once was lost, but now I'm found
+Was blind, but now I see`,
+          lyrics_malayalam: `അതിശയ കൃപ, എത്ര മധുരമാണ് ശബ്ദം
+എന്നെ പോലെ ഒരു പാപിയെ രക്ഷിച്ചു
+ഞാൻ നഷ്ടപ്പെട്ടിരുന്നു, ഇപ്പോൾ കണ്ടെത്തി
+അന്ധനായിരുന്നു, ഇപ്പോൾ കാണുന്നു`,
+          category: "Worship"
+        },
+        {
+          id: 2,
+          title: 'How Great Thou Art',
+          title_malayalam: 'എത്ര മഹാനായിരിക്കുന്നു നീ',
+          lyrics: `O Lord my God, when I in awesome wonder
+Consider all the works Thy hands have made
+I see the stars, I hear the rolling thunder
+Thy power throughout the universe displayed`,
+          lyrics_malayalam: `ഓ എന്റെ ദൈവമായ കർത്താവേ, ഞാൻ വിസ്മയത്തോടെ
+നിന്റെ കൈകൾ ഉണ്ടാക്കിയ സകല പ്രവൃത്തികളെയും പരിഗണിക്കുമ്പോൾ
+ഞാൻ നക്ഷത്രങ്ങളെ കാണുന്നു, ഉരുണ്ട ഇടിയുടെ ശബ്ദം കേൾക്കുന്നു
+നിന്റെ ശക്തി പ്രപഞ്ചമെങ്ങും പ്രദർശിപ്പിച്ചിരിക്കുന്നു`,
+          category: "Hymn"
+        },
+        {
+          id: 3,
+          title: 'Great Is Thy Faithfulness',
+          title_malayalam: 'മഹാനാണ് നിന്റെ വിശ്വസ്തത',
+          lyrics: `Great is Thy faithfulness, O God my Father
+There is no shadow of turning with Thee
+Thou changest not, Thy compassions they fail not
+As Thou hast been, Thou forever wilt be`,
+          lyrics_malayalam: `മഹാനാണ് നിന്റെ വിശ്വസ്തത, എന്റെ പിതാവായ ദൈവമേ
+നിനക്കൊരു തിരിയലിന്റെ നിഴലുമില്ല
+നീ മാറുന്നില്ല, നിന്റെ കരുണ തീരുന്നില്ല
+നീ എപ്പോഴും ഉണ്ടായിരുന്നതുപോലെ എന്നേക്കും ഉണ്ടാകും`,
+          category: "Praise"
+        }
+        // Add all your 170 songs here with both English and Malayalam versions
+      ];
+    }
+
+    function showError(message) {
+      document.getElementById('songTitle').innerText = 'Error';
+      document.getElementById('songContent').innerHTML = `<p class="error">${message}</p>`;
+    }
+
+    function setupUI() {
+      // Language switch button
+      document.getElementById('languageSwitch').addEventListener('click', toggleLanguage);
+      
+      // Favorite button
+      document.getElementById('toggleFavorite').addEventListener('click', () => {
+        toggleFavorite(currentSongId);
+      });
+      
+      // Menu button - shows song list
+      document.getElementById('menuBtn').addEventListener('click', showSongList);
+      
+      // Search button - toggles search bar
+      document.getElementById('searchBtn').addEventListener('click', () => {
+        const searchContainer = document.getElementById('searchContainer');
+        searchContainer.classList.toggle('visible');
+        if (searchContainer.classList.contains('visible')) {
+          document.getElementById('searchInput').focus();
+        } else {
+          document.getElementById('songList').classList.remove('visible');
+        }
+      });
+      
+      // Settings button
+      document.getElementById('settingsBtn').addEventListener('click', () => {
+        document.getElementById('settingsPanel').classList.add('visible');
+      });
+      
+      // Close buttons
+      document.getElementById('closeListBtn').addEventListener('click', () => {
+        document.getElementById('songList').classList.remove('visible');
+      });
+      
+      document.getElementById('closeSettingsBtn').addEventListener('click', () => {
+        document.getElementById('settingsPanel').classList.remove('visible');
+      });
+      
+      // Navigation buttons
+      document.getElementById('prevSong').addEventListener('click', () => {
+        navigateSong(-1);
+      });
+      
+      document.getElementById('nextSong').addEventListener('click', () => {
+        navigateSong(1);
+      });
+      
+      // Dark mode toggle
+      document.getElementById('darkModeToggle').addEventListener('change', toggleDarkMode);
+      
+      // Font size controls
+      document.getElementById('increaseFontBtn').addEventListener('click', () => changeFontSize(2));
+      document.getElementById('decreaseFontBtn').addEventListener('click', () => changeFontSize(-2));
+      document.getElementById('resetFontBtn').addEventListener('click', resetFontSize);
+      
+      // Auto-scroll toggle
+      document.getElementById('autoScrollToggle').addEventListener('change', toggleAutoScroll);
+      
+      // Filter buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          
+          const filter = e.target.getAttribute('data-filter');
+          showSongList(filter);
+        });
+      });
+      
+      // Search functionality
+      document.getElementById('searchInput').addEventListener('input', function() {
+        const term = this.value.toLowerCase();
+        if (term.length === 0) {
+          document.getElementById('songList').classList.remove('visible');
+          return;
+        }
+        
+        searchSongs(term);
+      });
+      
+      // Touch swipe detection for navigation
+      setupSwipeHandlers();
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          navigateSong(-1);
+        } else if (e.key === 'ArrowRight') {
+          navigateSong(1);
+        }
+      });
+    }
+
+    function setupSwipeHandlers() {
+      const handleTouchStart = (e) => {
+        touchStartX = e.touches[0].clientX;
+      };
+      
+      const handleTouchEnd = (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+        handleSwipe();
+      };
+      
+      const handleSwipe = () => {
+        const swipeThreshold = 75; // Minimum distance for a swipe
+        const swipeDifference = touchEndX - touchStartX;
+        
+        if (Math.abs(swipeDifference) < swipeThreshold) return;
+        
+        if (swipeDifference > 0) {
+          // Swipe right - go to previous song
+          navigateSong(-1);
+        } else {
+          // Swipe left - go to next song
+          navigateSong(1);
+        }
+      };
+      
+      // Add event listeners to swipe areas
+      document.getElementById('swipeLeft').addEventListener('touchstart', handleTouchStart);
+      document.getElementById('swipeLeft').addEventListener('touchend', handleTouchEnd);
+      document.getElementById('swipeRight').addEventListener('touchstart', handleTouchStart);
+      document.getElementById('swipeRight').addEventListener('touchend', handleTouchEnd);
+      
+      // Allow swiping on the main content area too
+      document.getElementById('songContent').addEventListener('touchstart', handleTouchStart);
+      document.getElementById('songContent').addEventListener('touchend', handleTouchEnd);
+    }
+
+    function navigateSong(direction) {
+      // Get the next or previous song ID
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const store = tx.objectStore(STORE_NAME);
+      const countRequest = store.count();
+      
+      countRequest.onsuccess = () => {
+        const totalSongs = countRequest.result;
+        let nextId = currentSongId + direction;
+        
+        // Handle wrap around
+        if (nextId > totalSongs) nextId = 1;
+        if (nextId < 1) nextId = totalSongs;
+        
+        loadSong(nextId);
+      };
+    }
+
+    function searchSongs(term) {
+      const results = [];
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const store = tx.objectStore(STORE_NAME);
+      
+      // First check if it's a direct song number
+      if (!isNaN(term) && term > 0) {
+        const numberRequest = store.get(parseInt(term));
+        numberRequest.onsuccess = () => {
+          if (numberRequest.result) {
+            loadSong(numberRequest.result.id);
+            document.getElementById('searchContainer').classList.remove('visible');
+            document.getElementById('searchInput').value = '';
+            return;
+          } else {
+            // If no match by number, proceed with title search
+            searchByTitle(term, results);
+          }
+        };
+      } else {
+        // Search by title
+        searchByTitle(term, results);
+      }
+    }
+
+    function searchByTitle(term, results) {
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const store = tx.objectStore(STORE_NAME);
+      const index = store.index('title');
+
+      index.openCursor().onsuccess = (e) => {
+        const cursor = e.target.result;
+        if (cursor) {
+          // Search both English and Malayalam titles
+          if (cursor.value.title.toLowerCase().includes(term) || 
+              (cursor.value.title_malayalam && cursor.value.title_malayalam.toLowerCase().includes(term))) {
+            results.push(cursor.value);
+          }
+          cursor.continue();
+        } else {
+          updateSearchResults(results);
+        }
+      };
+    }
+
+    function showSongList(filter = 'all') {
+      const songList = document.getElementById('songList');
+      const listContainer = document.getElementById('listContainer');
+      
+      // Clear previous list
+      listContainer.innerHTML = '<div class="loading"><div class="loading-spinner"></div><p>Loading songs...</p></div>';
+      
+      // Get songs based on filter
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const store = tx.objectStore(STORE_NAME);
+      const request = store.getAll();
+      
+      request.onsuccess = () => {
+        const songs = request.result;
+        
+        if (songs.length === 0) {
+          listContainer.innerHTML = '<p>No songs found in database</p>';
+          return;
+        }
+        
+        listContainer.innerHTML = ''; // Clear loading message
+        
+        // Apply filter
+        let filteredSongs = songs;
+        if (filter === 'favorites') {
+          filteredSongs = songs.filter(song => favorites.has(song.id));
+        } else if (filter !== 'all') {
+          // Filter by category if filter is not 'all' or 'favorites'
+          filteredSongs = songs.filter(song => song.category === filter);
+        }
+        
+        if (filteredSongs.length === 0) {
+          listContainer.innerHTML = '<p>No songs found for this filter</p>';
+          songList.classList.add('visible');
+          return;
+        }
+        
+        filteredSongs.forEach(song => {
+          const songItem = document.createElement('div');
+          songItem.className = 'song-item';
+          
+          const isFavorite = favorites.has(song.id);
+          
+          songItem.innerHTML = `
+            <div class="song-id">${song.id.toString().padStart(3, '0')}</div>
+            <div class="song-title">${currentLanguage === 'english' ? song.title : (song.title_malayalam || song.title)}</div>
+            <div class="favorite-icon ${isFavorite ? 'active' : ''}">${isFavorite ? '★' : '☆'}</div>
+          `;
+          
+          songItem.addEventListener('click', () => {
+            loadSong(song.id);
+            songList.classList.remove('visible');
+          });
+          
+          // Handle click on favorite icon
+          const favoriteIcon = songItem.querySelector('.favorite-icon');
+          favoriteIcon.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent triggering the song item click
+            toggleFavorite(song.id);
+            
+            // Update the icon
+            favoriteIcon.textContent = favorites.has(song.id) ? '★' : '☆';
+            favoriteIcon.classList.toggle('active', favorites.has(song.id));
+            
+            // If filtering by favorites, and this was just unfavorited, remove it
+            if (filter === 'favorites' && !favorites.has(song.id)) {
+              songItem.remove();
+              if (listContainer.children.length === 0) {
+                listContainer.innerHTML = '<p>No songs found for this filter</p>';
+              }
+            }
+          });
+          
+          listContainer.appendChild(songItem);
+        });
+        
+        songList.classList.add('visible');
+      };
+      
+      request.onerror = () => {
+        listContainer.innerHTML = '<p class="error">Error loading songs</p>';
+      };
+    }
+
+    function updateSearchResults(results) {
+      const listContainer = document.getElementById('listContainer');
+      
+      // Clear previous list
+      listContainer.innerHTML = '';
+      
+      if (results.length === 0) {
+        listContainer.innerHTML = '<p>No matching songs found</p>';
+      } else {
+        results.forEach(song => {
+          const songItem = document.createElement('div');
+          songItem.className = 'song-item';
+          
+          const isFavorite = favorites.has(song.id);
+          
+          songItem.innerHTML = `
+            <div class="song-id">${song.id.toString().padStart(3, '0')}</div>
+            <div class="song-title">${currentLanguage === 'english' ? song.title : (song.title_malayalam || song.title)}</div>
+            <div class="favorite-icon ${isFavorite ? 'active' : ''}">${isFavorite ? '★' : '☆'}</div>
+          `;
+          
+          songItem.addEventListener('click', () => {
+            loadSong(song.id);
+            document.getElementById('searchContainer').classList.remove('visible');
+            document.getElementById('searchInput').value = '';
+            document.getElementById('songList').classList.remove('visible');
+          });
+          
+          listContainer.appendChild(songItem);
+        });
+      }
+      
+      document.getElementById('songList').classList.add('visible');
+    }
+
+    function loadSong(id) {
+      document.getElementById('songContent').innerHTML = '<div class="loading"><div class="loading-spinner"></div><p>Loading song...</p></div>';
+      
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const store = tx.objectStore(STORE_NAME);
+      const request = store.get(id);
+
+      request.onsuccess = () => {
+        const song = request.result;
+        if (song) {
+          // Save current song ID
+          currentSongId = song.id;
+          
+          // Display ID as 3-digit number (e.g., 001)
+          document.getElementById('songId').innerText = song.id.toString().padStart(3, '0');
+          
+          // Display title in current language
+          const title = currentLanguage === 'english' ? song.title : (song.title_malayalam || song.title);
+          document.getElementById('songTitle').innerText = title;
+          
+          // Display lyrics in current language
+          const lyrics = currentLanguage === 'english' ? song.lyrics : (song.lyrics_malayalam || song.lyrics);
+          document.getElementById('songContent').innerHTML = 
+            lyrics.split('\n')
+              .map(p => p.trim() ? `<p>${p}</p>` : '')
+              .join('');
+          
+          // Update favorite button
+          updateFavoriteButton(song.id);
+          
+          // Scroll to top
+          window.scrollTo(0, 0);
+          
+          // Start auto-scroll if enabled
+          if (autoScroll) {
+            // Small delay to allow content to render
+            setTimeout(startAutoScroll, 500);
+          }
+        } else {
+          showError('Song not found');
+        }
+      };
+
+      request.onerror = () => {
+        showError('Error loading song');
+      };
+    }
+  </script>
+</body>
+</html>
