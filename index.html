@@ -617,43 +617,29 @@
 
     const request = indexedDB.open(DB_NAME, DB_VERSION);
 
+
     request.onupgradeneeded = (event) => {
       const db = event.target.result;
-      
-      // Create or update songs store
+      const oldVersion = event.oldVersion;
+
+
       if (!db.objectStoreNames.contains(STORE_NAME)) {
-        db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+        const store = db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+        store.createIndex('title', 'title', { unique: false });
       }
-      
-      // Create favorites store if it doesn't exist
+
       if (!db.objectStoreNames.contains(FAVORITES_STORE)) {
         db.createObjectStore(FAVORITES_STORE, { keyPath: 'id' });
       }
-      
-      // Create settings store if it doesn't exist
+
       if (!db.objectStoreNames.contains(SETTINGS_STORE)) {
         db.createObjectStore(SETTINGS_STORE, { keyPath: 'name' });
       }
       
-      const store = event.currentTarget.transaction.objectStore(STORE_NAME);
-      
-      // Create indexes if they don't exist
-      if (!store.indexNames.contains('title')) {
-        store.createIndex('title', 'title', { unique: false });
+      if (oldVersion < 1) {
+        const store = event.currentTarget.transaction.objectStore(STORE_NAME);
+        getInitialSongs().forEach(song => store.put(song));
       }
-      
-      if (!store.indexNames.contains('number')) {
-        store.createIndex('number', 'id', { unique: true });
-      }
-
-      // Add initial songs with bilingual lyrics
-      const songs = getInitialSongs();
-      
-      songs.forEach(song => {
-        store.put(song);
-      });
-      
-      console.log('Database upgrade complete, added', songs.length, 'songs');
     };
 
     request.onsuccess = (event) => {
@@ -862,30 +848,40 @@
     }
 
     function startAutoScroll() {
-      if (!autoScroll) return;
-      
-      const content = document.getElementById('songContent');
-      const scrollHeight = content.scrollHeight;
-      const duration = scrollHeight * 30; // Adjust speed (higher = slower)
-      
-      let startTime = null;
-      const initialScrollTop = content.scrollTop;
-      
-      function step(timestamp) {
-        if (!startTime) startTime = timestamp;
-        
-        const elapsed = timestamp - startTime;
-        const scrollProgress = Math.min(elapsed / duration, 1);
-        
-        content.scrollTop = initialScrollTop + (scrollHeight - content.clientHeight) * scrollProgress;
-        
-        if (scrollProgress < 1 && autoScroll) {
-          requestAnimationFrame(step);
-        }
-      }
-      
-      requestAnimationFrame(step);
+  if (!autoScroll) return;
+  
+  const content = document.getElementById('songContent');
+  const startPosition = content.scrollTop;
+  const targetPosition = content.scrollHeight - content.clientHeight;
+  const duration = 60000; // 60 seconds
+  
+  let startTime = null;
+
+  function animateScroll(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const progress = timestamp - startTime;
+    
+    content.scrollTop = easeInOutQuad(
+      progress,
+      startPosition,
+      targetPosition - startPosition,
+      duration
+    );
+
+    if (progress < duration && autoScroll) {
+      requestAnimationFrame(animateScroll);
     }
+  }
+
+  requestAnimationFrame(animateScroll);
+}
+
+function easeInOutQuad(t, b, c, d) {
+  t /= d/2;
+  if (t < 1) return c/2*t*t + b;
+  t--;
+  return -c/2 * (t*(t-2) - 1) + b;
+}
 
     function checkDatabase() {
       return new Promise((resolve, reject) => {
@@ -1027,16 +1023,19 @@ As Thou hast been, Thou forever wilt be`,
       });
       
       // Search functionality
-      document.getElementById('searchInput').addEventListener('input', function() {
-        const term = this.value.toLowerCase();
-        if (term.length === 0) {
-          document.getElementById('songList').classList.remove('visible');
-          return;
-        }
-        
-        searchSongs(term);
-      });
+// Update search input handler
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const term = this.value.trim();
+      const searchContainer = document.getElementById('searchContainer');
       
+      if (term.length > 0) {
+        searchSongs(term);
+        searchContainer.classList.add('visible');
+      } else {
+        searchContainer.classList.remove('visible');
+        document.getElementById('songList').classList.remove('visible');
+      }
+    });
       // Touch swipe detection for navigation
       setupSwipeHandlers();
       
@@ -1051,29 +1050,27 @@ As Thou hast been, Thou forever wilt be`,
     }
 
     function setupSwipeHandlers() {
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
       const handleTouchStart = (e) => {
         touchStartX = e.touches[0].clientX;
-      };
-      
-      const handleTouchEnd = (e) => {
-        touchEndX = e.changedTouches[0].clientX;
-        handleSwipe();
+        e.preventDefault(); 
       };
       
       const handleSwipe = () => {
-        const swipeThreshold = 75; // Minimum distance for a swipe
-        const swipeDifference = touchEndX - touchStartX;
+        const swipeThreshold = 50;
+        const swipeDistance = Math.abs(touchEndX - touchStartX);
         
-        if (Math.abs(swipeDifference) < swipeThreshold) return;
+        if (swipeDistance < swipeThreshold) return;
         
-        if (swipeDifference > 0) {
-          // Swipe right - go to previous song
-          navigateSong(-1);
+        if (touchEndX < touchStartX) {
+          navigateSong(1); // Swipe left - next
         } else {
-          // Swipe left - go to next song
-          navigateSong(1);
+          navigateSong(-1); // Swipe right - previous
         }
       };
+    }
       
       // Add event listeners to swipe areas
       document.getElementById('swipeLeft').addEventListener('touchstart', handleTouchStart);
@@ -1084,7 +1081,7 @@ As Thou hast been, Thou forever wilt be`,
       // Allow swiping on the main content area too
       document.getElementById('songContent').addEventListener('touchstart', handleTouchStart);
       document.getElementById('songContent').addEventListener('touchend', handleTouchEnd);
-    }
+    
 
     function navigateSong(direction) {
       // Get the next or previous song ID
@@ -1105,25 +1102,16 @@ As Thou hast been, Thou forever wilt be`,
     }
 
     function searchSongs(term) {
-      const results = [];
-      const tx = db.transaction(STORE_NAME, 'readonly');
-      const store = tx.objectStore(STORE_NAME);
-      
-      // First check if it's a direct song number
-      if (!isNaN(term) && term > 0) {
-        const numberRequest = store.get(parseInt(term));
-        numberRequest.onsuccess = () => {
-          if (numberRequest.result) {
-            loadSong(numberRequest.result.id);
-            document.getElementById('searchContainer').classList.remove('visible');
-            document.getElementById('searchInput').value = '';
-            return;
+      if (/^\d+$/.test(term)) {
+        const songNumber = parseInt(term, 10);
+        if (songNumber > 0 && songNumber <= totalSongs) {
+          loadSong(songNumber);
+          return;
           } else {
             // If no match by number, proceed with title search
             searchByTitle(term, results);
           }
-        };
-      } else {
+        } else {
         // Search by title
         searchByTitle(term, results);
       }
@@ -1150,70 +1138,52 @@ As Thou hast been, Thou forever wilt be`,
     }
 
     function showSongList(filter = 'all') {
-      const songList = document.getElementById('songList');
-      const listContainer = document.getElementById('listContainer');
-      
-      // Clear previous list
-      listContainer.innerHTML = '<div class="loading"><div class="loading-spinner"></div><p>Loading songs...</p></div>';
-      
-      // Get songs based on filter
-      const tx = db.transaction(STORE_NAME, 'readonly');
-      const store = tx.objectStore(STORE_NAME);
-      const request = store.getAll();
-      
-      request.onsuccess = () => {
-        const songs = request.result;
-        
-        if (songs.length === 0) {
-          listContainer.innerHTML = '<p>No songs found in database</p>';
-          return;
-        }
-        
-        listContainer.innerHTML = ''; // Clear loading message
-        
-        // Apply filter
-        let filteredSongs = songs;
-        if (filter === 'favorites') {
-          filteredSongs = songs.filter(song => favorites.has(song.id));
-        } else if (filter !== 'all') {
-          // Filter by category if filter is not 'all' or 'favorites'
-          filteredSongs = songs.filter(song => song.category === filter);
-        }
-        
-        if (filteredSongs.length === 0) {
-          listContainer.innerHTML = '<p>No songs found for this filter</p>';
-          songList.classList.add('visible');
-          return;
-        }
-        
+    const songList = document.getElementById('songList');
+    const listContainer = document.getElementById('listContainer');
+
+    // Clear previous list
+    listContainer.innerHTML = '<div class="loading"><div class="loading-spinner"></div><p>Loading songs...</p></div>';
+
+    const tx = db.transaction(STORE_NAME, 'readonly');
+    const store = tx.objectStore(STORE_NAME);
+    const request = store.getAll();
+
+    request.onsuccess = () => {
+      const songs = request.result;
+      listContainer.innerHTML = '';
+
+      let filteredSongs = songs;
+      if (filter === 'favorites') {
+        filteredSongs = songs.filter(song => favorites.has(song.id));
+      } else if (filter !== 'all') {
+        filteredSongs = songs.filter(song => song.category === filter);
+      }
+
+      if (filteredSongs.length === 0) {
+        listContainer.innerHTML = '<p>No songs found for this filter</p>';
+      } else {
         filteredSongs.forEach(song => {
           const songItem = document.createElement('div');
           songItem.className = 'song-item';
-          
           const isFavorite = favorites.has(song.id);
-          
+
           songItem.innerHTML = `
             <div class="song-id">${song.id.toString().padStart(3, '0')}</div>
             <div class="song-title">${currentLanguage === 'english' ? song.title : (song.title_malayalam || song.title)}</div>
             <div class="favorite-icon ${isFavorite ? 'active' : ''}">${isFavorite ? '★' : '☆'}</div>
           `;
-          
+
           songItem.addEventListener('click', () => {
             loadSong(song.id);
             songList.classList.remove('visible');
           });
-          
-          // Handle click on favorite icon
+
           const favoriteIcon = songItem.querySelector('.favorite-icon');
           favoriteIcon.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent triggering the song item click
+            e.stopPropagation();
             toggleFavorite(song.id);
-            
-            // Update the icon
             favoriteIcon.textContent = favorites.has(song.id) ? '★' : '☆';
             favoriteIcon.classList.toggle('active', favorites.has(song.id));
-            
-            // If filtering by favorites, and this was just unfavorited, remove it
             if (filter === 'favorites' && !favorites.has(song.id)) {
               songItem.remove();
               if (listContainer.children.length === 0) {
@@ -1221,17 +1191,18 @@ As Thou hast been, Thou forever wilt be`,
               }
             }
           });
-          
+
           listContainer.appendChild(songItem);
         });
-        
-        songList.classList.add('visible');
-      };
-      
-      request.onerror = () => {
-        listContainer.innerHTML = '<p class="error">Error loading songs</p>';
-      };
-    }
+      }
+
+      songList.classList.add('visible'); // moved here to always show panel
+    };
+
+    request.onerror = () => {
+      listContainer.innerHTML = '<p class="error">Error loading songs</p>';
+    };
+  }
 
     function updateSearchResults(results) {
       const listContainer = document.getElementById('listContainer');
@@ -1269,8 +1240,7 @@ As Thou hast been, Thou forever wilt be`,
     }
 
     function loadSong(id) {
-      document.getElementById('songContent').innerHTML = '<div class="loading"><div class="loading-spinner"></div><p>Loading song...</p></div>';
-      
+      document.getElementById('songContent').style.fontSize = `${currentFontSize}px`;
       const tx = db.transaction(STORE_NAME, 'readonly');
       const store = tx.objectStore(STORE_NAME);
       const request = store.get(id);

@@ -3,6 +3,10 @@
     "short_name": "Songbook",
     "start_url": "/",
     "display": "standalone",
+    "orientation": "portrait",
+    "scope": "/",
+    "description": "Bilingual Songbook",
+    "categories": ["music", "books"],
     "background_color": "#134E4A",
     "theme_color": "#134E4A",
     "icons": [

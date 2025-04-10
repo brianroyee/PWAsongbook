@@ -1,9 +1,10 @@
+// sw.js - Update cached assets
 const CACHE_NAME = 'songbook-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/styles.css',
-  // Add other assets you want to cache
+  '/manifest.json',
+  'https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;700&display=swap'
 ];
 
 self.addEventListener('install', event => {
