@@ -9,9 +9,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'Church Songbook',
-        short_name: 'Songbook',
-        description: 'Malayalam Church Songbook PWA',
+        name: 'EHBCK Songbook',
+        short_name: 'EHBCK',
+        description: 'EHBCK Malayalam Church Songbook PWA',
         theme_color: '#FDFBF7',
         background_color: '#FDFBF7',
         display: 'standalone',

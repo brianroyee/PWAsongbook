@@ -4,7 +4,7 @@
     "number": "1",
     "title_mal": "വാഴ്ത്തുക നീ മനമേ",
     "title_eng": "Vazhthuka nee maname",
-    "category": "Worship",
+    "category": "സ്തോത്രം | Praise",
     "chorus": {
       "mal": "വാഴ്ത്തുക നീ മനമേ- എൻ പരനേ-\nവാഴ്ത്തുക നീ മനമേ-",
       "eng": "Vazhthuka nee maname – en parane\nVazhthuka nee maname"
@@ -37,6 +37,68 @@
       {
         "mal": "നിത്യ രാജാവിവൻ ഓക്കുകിൽ സർവ്വ\nസൃഷ്ടികളും സ്തുതിക്കുന്ന യഹോവ",
         "eng": "Nithya rajavivanorkukil sarva\nshrishtikalum sthuthikunna yehova"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "number": "2",
+    "title_mal": "എന്നോടുള്ള നിൻ സർവ്വനന്മകൾക്കായി",
+    "title_eng": "Ennodulla nin sarva nanmakalkkai",
+    "category": "സ്തോത്രം | Praise", 
+    "verses": [
+      {
+        "mal": "എന്നോടുള്ള നിൻ സർവ്വനന്മകൾക്കായി ഞാൻ\nഎന്തു ചെയ്യേണ്ടുനിനക്കേശുപരാ! – ഇപ്പോൾ",
+        "eng": "Ennodulla nin sarva nanmakalkkai njan\nenthu cheyendu ninakesupara-ippol"
+      },
+      {
+        "mal": "നന്ദികൊണ്ടെന്റെയുള്ളം നന്നേ നിറയുന്നേ\nസന്നാഹമോടെ സ്തുതി പാടിടുന്നേൻ – ദേവാ",
+        "eng": "Nandi kondenteyullam nanne nirayunne\nsannahamode sthuthi padidunnen-Deva"
+      },
+      {
+        "mal": "പാപത്തിൽ നിന്നു എന്നെ കോരിയെടുപ്പാനായ്\nശാപ ശിക്ഷകളേറ്റ ദേവാത്മജാ – മഹാ",
+        "eng": "Papathil ninnu enne koriyeduppanai\nshapa sikshakaletta devalmaja-maha"
+      },
+      {
+        "mal": "എന്നെയൻപോടു ദിനംതോറും നടത്തുന്ന\nപൊന്നിടയന്നനന്തം വന്ദനമേ – എന്റെ",
+        "eng": "Enneyanpodu dhinam thorum nadathunna\nponnidayan anandam vandhaname-ente"
+      },
+      {
+        "mal": "താതൻ സന്നിധിയിലെൻ പേർക്കു സദാ പക്ഷ\nവാദം ചെയ്യുന്ന മമ ജീവനാഥാ – പക്ഷ",
+        "eng": "Thathan sannidhiyilen perkku sada paksha\nvadam cheyunna mama jeevanatha-paksha"
+      },
+      {
+        "mal": "മന്നിടത്തിലടിയൻ ജീവിക്കും നാളെന്നും\nവന്ദനം ചെയ്യും തിരുനാമത്തിന്നു – ദേവാ",
+        "eng": "Mannidayathil adiyan jeevikkum naalennum\nVandhanam cheyyum thirunaamathinu – Deva"
+      }
+    ]
+  },
+  {
+    "id": 839,
+    "number": "839",
+    "title_mal": "യാഹ് നല്ല ഇടയൻ",
+    "title_eng": "yah nalla idayan",
+    "category": "ആശ്രയം | Hope",
+    "chorus": {
+      "mal": "യാഹ് നല്ല ഇടയൻ\nഎന്നുമെന്റെ പാലകൻ\nഇല്ലെനിക്കു ഖേദമൊന്നുമേ",
+      "eng": "yah nalla idayan\nennumente paalakan\nillenikku khedamonnume"
+    },
+    "verses": [
+      {
+        "mal": "പച്ചയായ പുൽപ്പുറങ്ങളിൽ\nസ്വച്ചമാം നദിക്കരികിലും\nക്ഷേമമായി പോറ്റുന്നെന്നെയും\nസ്നേഹമോടെന്നേശു നായകൻ",
+        "eng": "pachayaya pulppurangalil\nsvachamaam nadikkarikilum\nkshemamaay pottunnenneyum\nsnehamodenneshu naayakan"
+      },
+      {
+        "mal": "കൂരിരുളിൻ താഴ്വരയതിൽ\nഏകനായി സഞ്ചരിക്കിലും\nആധിയെന്യെ പാർത്തിടുന്നതും\nആത്മനാഥൻ കൂടെയുള്ളതാൽ",
+        "eng": "kurirulin thaazhvarayathil\neekanaay sanjcharikkilum\naadhiyenye paarthidunnathum\naathma naathan koodeyullathaal"
+      },
+      {
+        "mal": "ശത്രുവിന്റെ പാളയത്തിലും\nമൃഷ്ട-ഭോജ്യമേകിടുന്നവൻ\nനന്മയും കരുണയൊക്കെയും\nനിത്യമെന്നെ പിന്തുടർന്നിടും",
+        "eng": "shathruvinte paalayathilum\nmrusda-bhojyam'ekidunnavan\nnanmayum karunayokkeyum\nnithya'menne pinthudarnnidum"
+      },
+      {
+        "mal": "കഷ്ട-നഷ്ട-ശോധനകളിൽ\nപൊന്മുഖം ഞാൻ നേരിൽ കണ്ടിടും\nശാശ്വത ഭുജങ്ങളിൻ മീതെ\nനിർഭയനായ് ഞാൻ വസിച്ചീടും",
+        "eng": "kasda-nashda-shodhanakalil\nponmukham njaan neril kandidum\nshashvatha bhujangalin meethe\nnirbhayanaay njaan vasicheedum"
       }
     ]
   }
