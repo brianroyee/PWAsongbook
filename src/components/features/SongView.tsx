@@ -21,7 +21,7 @@ export const SongView = () => {
   return (
     <div className="pb-20 animate-in fade-in duration-300">
       {/* Custom Header for Song View - Overrides default header */}
-      <div className="fixed top-0 left-0 right-0 h-16 bg-bg-primary/95 backdrop-blur-md flex items-center justify-between px-4 z-[60] border-b border-gray-100 dark:border-gray-800">
+      <div className="fixed top-0 left-0 right-0 h-16 bg-bg-primary flex items-center justify-between px-4 z-[60] border-b border-gray-100 dark:border-gray-800">
         <button onClick={() => navigate(-1)} className="p-2 -ml-2 hover:bg-bg-secondary rounded-full transition-colors">
           <ArrowLeft className="w-6 h-6 text-text-primary" />
         </button>
