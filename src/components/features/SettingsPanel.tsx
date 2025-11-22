@@ -6,7 +6,6 @@ export const SettingsPanel = () => {
 
   return (
     <div className="p-4 space-y-6">
-      <h1 className="text-2xl font-bold font-malayalam mb-4 text-accent-primary">Settings</h1>
       
       {/* Theme Toggle */}
       <div className="bg-bg-secondary p-4 rounded-xl flex items-center justify-between shadow-sm">
@@ -72,6 +71,20 @@ export const SettingsPanel = () => {
             ആത്മാവിൽ വരേണമേ
           </p>
         </div>
+      </div>
+
+      {/* Report Bug */}
+      <div className="bg-bg-secondary p-4 rounded-xl shadow-sm">
+        <h2 className="font-medium text-lg mb-3">Help & Support</h2>
+        <a
+          href="mailto:brianroyee@gmail.com?subject=Songbook%20Bug%20Report&body=Please%20describe%20the%20issue%20you%20encountered%3A%0A%0A"
+          className="block w-full py-3 px-4 bg-accent-primary text-white text-center rounded-lg font-medium hover:bg-accent-secondary transition-colors"
+        >
+          Report a Bug
+        </a>
+        <p className="text-xs text-text-secondary mt-2 text-center">
+          Your feedback helps us improve the app
+        </p>
       </div>
     </div>
   );
