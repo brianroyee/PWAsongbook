@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "number": "1",
+    "title_mal": "എല്ലാർക്കും നന്മകൾ",
+    "title_eng": "Ellarkkum Nanmakal",
+    "category": "Worship",
+    "verses": [
+      {
+        "mal": "എല്ലാർക്കും നന്മകൾ ചെയ്യുന്നവൻ\nഎല്ലാർക്കും നന്മകൾ ചെയ്യുന്നവൻ",
+        "eng": "Ellarkkum nanmakal cheyyunnavan\nEllarkkum nanmakal cheyyunnavan"
+      },
+      {
+        "mal": "നല്ലവൻ യേശു പരൻ - അതി\nനല്ലവൻ യേശു പരൻ",
+        "eng": "Nallavan yeshu paran - athi\nNallavan yeshu paran"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "number": "34",
+    "title_mal": "ആത്മാവിൽ വരേണമേ",
+    "title_eng": "Aathmaavil Varename",
+    "category": "Holy Spirit",
+    "chorus": {
+      "mal": "ആത്മാവിൽ വരേണമേ\nശക്തിയിൽ വരേണമേ",
+      "eng": "Aathmaavil varename\nShakthiyil varename"
+    },
+    "verses": [
+      {
+        "mal": "നിൻ വചനത്തിൻ മർമ്മങ്ങൾ\nഎൻ ഹൃദയത്തിൽ ഓതുവാൻ",
+        "eng": "Nin vachanathin marmangal\nEn hridayathil othuvan"
+      }
+    ]
+  }
+]

@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manjari:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #fdfbf7;
+    --bg-secondary: #f3efe5;
+    --text-primary: #2d2420;
+    --text-secondary: #5d5550;
+    --accent-primary: #8b4513;
+    --accent-secondary: #cd853f;
+    --status-error: #d32f2f;
+  }
+
+  .dark {
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-primary: #d2b48c;
+    --accent-secondary: #cd853f;
+    --status-error: #ef5350;
+  }
+
+  body {
+    @apply bg-bg-primary text-text-primary font-english transition-colors duration-200;
+  }
+}
+
+.font-malayalam {
+  font-family: "Manjari", sans-serif;
+}
+
+.font-english {
+  font-family: "Inter", sans-serif;
+}
