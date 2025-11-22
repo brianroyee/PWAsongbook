@@ -72,9 +72,11 @@ export const Search = () => {
         </div>
       </div>
 
-      <div className="text-sm text-text-secondary mb-2">
-        {filteredSongs.length} song{filteredSongs.length !== 1 ? 's' : ''} found
-      </div>
+      {songs.length > 0 && (
+        <div className="text-sm text-text-secondary mb-2 animate-fade-in-up">
+          {filteredSongs.length} song{filteredSongs.length !== 1 ? 's' : ''} found
+        </div>
+      )}
 
       <SongList songs={filteredSongs} />
     </div>
