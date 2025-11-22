@@ -106,8 +106,8 @@
   {
   "id": 557,
   "number": "557",
-  "title_mal": "Ethra nallavan’yeshuparan Mithra’manenikennuman",
-  "title_eng": "",
+  "title_mal": "Ethra nallavan yeshuparan",
+  "title_eng": "എത്ര നല്ലവനേശുപരൻ",
   "category": "സ്തോത്രം | Praise",
   "chorus": {
     "mal": "Ethra nallavan yeshuparan\nMithra’manenikennuman\n\nNin thiru’chirakin marvel njanennum\nNir’bhayamai vasikum\nEthoru kedam varikilum ente\nYeshuvil charidum njan",
@@ -115,32 +115,16 @@
   },
   "verses": [
     {
-      "mal": "1 Enne karangalil vahichidum than\n  Ente kannuneer thudachidum than\n  Kurirul mudumen jeevitha’vaziyil\n  Anugrhamay nadathum",
-      "eng": ""
+      "mal": "Enne karangalil vahichidum than\n  Ente kannuneer thudachidum than\n  Kurirul mudumen jeevitha’vaziyil\n  Anugrhamay nadathum",
+      "eng": "എന്നെ കരങ്ങളിൽ വഹിച്ചിടും താൻ\nഎന്റെ കണ്ണുനീർ തുടച്ചിടും താൻ\nകാരിരുൾ മൂടുമെൻ ജീവിതവഴിയിൽ\nഅനുഗ്രഹമായ് നടത്തും"
     },
     {
-      "mal": "2 Enne vilichaven viswasthanam\n  Ennum Maratha valla’bhanam\n  Inne’enikka’kayal’akulamilla\n  Mannaven’en thunayam",
-      "eng": ""
+      "mal": "Enne vilichaven viswasthanam\n  Ennum Maratha valla’bhanam\n  Inne’enikka’kayal’akulamilla\n  Mannaven’en thunayam",
+      "eng": "എന്നെ വിളിച്ചവൻ വിശ്വസ്തനാം\nഎന്നും മാറാത്ത വല്ലഭനാം\nഇന്നെനിക്കാകയാലാകുലമില്ല\nമന്നവനെൻ തുണയാം"
     },
     {
-      "mal": "3 Loka’sukangale thyegichidum njan\n  Sneha’nathane anugamikum\n  Nindakal sahichum jevane pakachum\n  Poruthu’menna’yussellam",
-      "eng": ""
-    },
-    {
-      "mal": "എത്ര നല്ലവനേശുപരൻ\nമിത്രമാണെനിക്കെന്നുമവൻ\n\nതൻതിരുചിറകിൻ മറവിൽ\nഞാനെന്നും നിർഭയമായ് വസിക്കും \nഏതൊരു ഖേദവും വരികിലും എന്റെ\nയേശുവിൽ ചാരിടും ഞാൻ",
-      "eng": ""
-    },
-    {
-      "mal": "2 എന്നെ കരങ്ങളിൽ വഹിച്ചിടും താൻ\nഎന്റെ കണ്ണുനീർ തുടച്ചിടും താൻ\nകാരിരുൾ മൂടുമെൻ ജീവിതവഴിയിൽ\nഅനുഗ്രഹമായ് നടത്തും",
-      "eng": ""
-    },
-    {
-      "mal": "3 എന്നെ വിളിച്ചവൻ വിശ്വസ്തനാം\nഎന്നും മാറാത്ത വല്ലഭനാം\nഇന്നെനിക്കാകയാലാകുലമില്ല\nമന്നവനെൻ തുണയാം",
-      "eng": ""
-    },
-    {
-      "mal": "4 ലോകസുഖങ്ങളെ ത്യജിച്ചിടും ഞാൻ\nസ്നേഹനാഥനെ അനുഗമിക്കും\nനിന്ദകൾ സഹിച്ചും ജീവനെ പകച്ചും\nപൊരുതുമെന്നായുസ്സെല്ലാം",
-      "eng": ""
+      "mal": "Loka’sukangale thyegichidum njan\n  Sneha’nathane anugamikum\n  Nindakal sahichum jevane pakachum\n  Poruthu’menna’yussellam",
+      "eng": "ലോകസുഖങ്ങളെ ത്യജിച്ചിടും ഞാൻ\nസ്നേഹനാഥനെ അനുഗമിക്കും\nനിന്ദകൾ സഹിച്ചും ജീവനെ പകച്ചും\nപൊരുതുമെന്നായുസ്സെല്ലാം"
     }
   ]
 }
