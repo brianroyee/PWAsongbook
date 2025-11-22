@@ -77,7 +77,7 @@ export const SettingsPanel = () => {
       <div className="bg-bg-secondary p-4 rounded-xl shadow-sm">
         <h2 className="font-medium text-lg mb-3">Help & Support</h2>
         <a
-          href="mailto:brianroyee@gmail.com?subject=Songbook%20Bug%20Report&body=Please%20describe%20the%20issue%20you%20encountered%3A%0A%0A"
+          href="mailto:briancodee@gmail.com?subject=Songbook%20Bug%20Report&body=Please%20describe%20the%20issue%20you%20encountered%3A%0A%0A"
           className="block w-full py-3 px-4 bg-accent-primary text-white text-center rounded-lg font-medium hover:bg-accent-secondary transition-colors"
         >
           Report a Bug
