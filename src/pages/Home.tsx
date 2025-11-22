@@ -20,7 +20,7 @@ export const Home = () => {
           <input
             type="text"
             placeholder="Search by number or lyrics..."
-            className="w-full bg-bg-secondary pl-12 pr-4 py-3.5 rounded-2xl border-none focus:ring-2 focus:ring-accent-primary/20 outline-none text-text-primary placeholder:text-text-secondary/60 font-medium transition-all"
+            className="w-full bg-bg-secondary pl-12 pr-4 py-3.5 rounded-2xl border-none focus:ring-2 focus:ring-primary/20 outline-none text-text-primary placeholder:text-text-secondary/60 font-medium transition-all"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />

@@ -49,7 +49,7 @@ export const Search = () => {
           <input
             type="text"
             placeholder="Search by number or lyrics..."
-            className="w-full bg-bg-secondary pl-10 pr-4 py-3 rounded-xl border-none focus:ring-2 focus:ring-accent-primary/20 outline-none transition-shadow text-text-primary placeholder:text-text-secondary"
+            className="w-full bg-bg-secondary pl-10 pr-4 py-3 rounded-xl border-none focus:ring-2 focus:ring-accent-primary outline-none transition-shadow text-text-primary placeholder:text-text-secondary"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -72,11 +72,9 @@ export const Search = () => {
         </div>
       </div>
 
-      {songs.length > 0 && (
-        <div className="text-sm text-text-secondary mb-2 animate-fade-in-up">
-          {filteredSongs.length} song{filteredSongs.length !== 1 ? 's' : ''} found
-        </div>
-      )}
+      <div className="text-sm text-text-secondary mb-2">
+        {filteredSongs.length} song{filteredSongs.length !== 1 ? 's' : ''} found
+      </div>
 
       <SongList songs={filteredSongs} />
     </div>

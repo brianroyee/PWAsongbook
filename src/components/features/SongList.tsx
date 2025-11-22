@@ -11,20 +11,14 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.02
+      staggerChildren: 0.05
     }
   }
 };
 
 const item = {
-  hidden: { opacity: 0, y: 10 },
-  show: { 
-    opacity: 1, 
-    y: 0,
-    transition: {
-      duration: 0.2
-    }
-  }
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 }
 };
 
 export const SongList = ({ songs }: SongListProps) => {

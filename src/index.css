@@ -7,30 +7,35 @@
 @layer base {
   :root {
     /* Style Guide Theme: Orange, Black, White */
-    --bg-primary: 255 255 255; /* Pure White */
-    --bg-secondary: 245 245 245; /* Light Gray #F5F5F5 */
+    --bg-primary: #FFFFFF; /* Pure White */
+    --bg-secondary: #F5F5F5; /* Light Gray */
     
-    --text-primary: 26 26 26; /* Near Black #1A1A1A */
-    --text-secondary: 102 102 102; /* Mid Gray #666666 */
+    --text-primary: #1A1A1A; /* Near Black */
+    --text-secondary: #666666; /* Mid Gray */
     
-    --accent-primary: 255 107 0; /* Vibrant Orange #FF6B00 */
-    --accent-secondary: 255 133 51; /* Lighter Orange #FF8533 */
+    --accent-primary: #FF6B00; /* Vibrant Orange */
+    --accent-secondary: #FF8533; /* Lighter Orange */
     
-    --status-error: 255 59 48; /* #FF3B30 */
+    --status-error: #FF3B30;
+    
+    /* Helper for glass/card if needed */
+    --color-primary: #FF6B00;
   }
 
   .dark {
     /* Dark Mode Adaptation */
-    --bg-primary: 0 0 0; /* Pure Black */
-    --bg-secondary: 28 28 30; /* Dark Gray #1C1C1E */
+    --bg-primary: #000000; /* Pure Black */
+    --bg-secondary: #1C1C1E; /* Dark Gray */
     
-    --text-primary: 255 255 255;
-    --text-secondary: 142 142 147; /* #8E8E93 */
+    --text-primary: #FFFFFF;
+    --text-secondary: #8E8E93;
     
-    --accent-primary: 255 133 51; /* Lighter Orange */
-    --accent-secondary: 255 107 0;
+    --accent-primary: #FF8533; /* Lighter Orange */
+    --accent-secondary: #FF6B00;
     
-    --status-error: 255 69 58; /* #FF453A */
+    --status-error: #FF453A;
+    
+    --color-primary: #FF8533;
   }
 
   body {

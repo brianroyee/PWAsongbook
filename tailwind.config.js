@@ -6,22 +6,20 @@ export default {
     extend: {
       colors: {
         bg: {
-          primary: "rgb(var(--bg-primary) / <alpha-value>)",
-          secondary: "rgb(var(--bg-secondary) / <alpha-value>)",
+          primary: "var(--bg-primary)",
+          secondary: "var(--bg-secondary)",
         },
         text: {
-          primary: "rgb(var(--text-primary) / <alpha-value>)",
-          secondary: "rgb(var(--text-secondary) / <alpha-value>)",
+          primary: "var(--text-primary)",
+          secondary: "var(--text-secondary)",
         },
         accent: {
-          primary: "rgb(var(--accent-primary) / <alpha-value>)",
-          secondary: "rgb(var(--accent-secondary) / <alpha-value>)",
+          primary: "var(--accent-primary)",
+          secondary: "var(--accent-secondary)",
         },
         status: {
-          error: "rgb(var(--status-error) / <alpha-value>)",
+          error: "var(--status-error)",
         },
-        // Add primary alias for compatibility
-        primary: "rgb(var(--accent-primary) / <alpha-value>)",
       },
       fontFamily: {
         malayalam: ["Manjari", "sans-serif"],
