@@ -1,16 +1,20 @@
 import { Home, Search, Heart, Settings } from 'lucide-react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { SettingsModal } from './SettingsModal';
 
 export const BottomNav = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
     { icon: Home, label: 'Home', path: '/' },
     { icon: Search, label: 'Search', path: '/search' },
     { icon: Heart, label: 'Favorites', path: '/favorites' },
   ];
+
+  // Don't replace history if we're coming from a song view
+  const shouldReplace = !location.pathname.startsWith('/song/');
 
   return (
     <>
@@ -19,6 +23,7 @@ export const BottomNav = () => {
           <NavLink
             key={path}
             to={path}
+            replace={shouldReplace}
             className={({ isActive }) =>
               `flex flex-col items-center justify-center w-full h-full transition-colors ${
                 isActive ? 'text-accent-primary' : 'text-text-secondary hover:text-text-primary'
