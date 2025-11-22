@@ -1,7 +1,68 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manjari:wght@400;700&display=swap");
 
 @tailwind base;
-@tailwind components;
+/* Modern design tokens */
+:root {
+  --color-primary: hsl(210, 30%, 12%);
+  --color-secondary: hsl(210, 30%, 18%);
+  --color-accent: hsl(210, 70%, 55%);
+  --color-bg-primary: hsl(210, 30%, 10%);
+  --color-bg-secondary: hsl(210, 30%, 15%);
+  --color-bg-glass: hsla(210, 30%, 12%, 0.6);
+  --color-text-primary: hsl(0, 0%, 95%);
+  --color-text-secondary: hsl(0, 0%, 70%);
+}
+
+/* Glassmorphism for modals and panels */
+.glass {
+  background: var(--color-bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  border-radius: 1rem;
+}
+
+/* Gradient background for app root */
+body {
+  background: linear-gradient(135deg, hsl(210, 30%, 12%), hsl(210, 30%, 18%));
+  color: var(--color-text-primary);
+}
+
+/* Keyframe animations */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseScale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Utility classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+/* Button micro‑animation */
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.btn-primary:hover {
+  background: hsl(210, 70%, 50%);
+  transform: scale(1.05);
+}
 @tailwind utilities;
 
 @layer base {

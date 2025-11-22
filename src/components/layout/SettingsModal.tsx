@@ -18,7 +18,7 @@ export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
       />
       
       {/* Modal */}
-      <div className="relative w-full max-w-lg bg-bg-primary rounded-t-3xl sm:rounded-3xl max-h-[90vh] overflow-y-auto animate-in slide-in-from-bottom duration-300 sm:slide-in-from-bottom-0">
+      <div className="relative w-full max-w-lg glass rounded-t-3xl sm:rounded-3xl max-h-[90vh] overflow-y-auto animate-fade-in-up sm:slide-in-from-bottom-0">
         <div className="sticky top-0 bg-bg-primary/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 px-4 py-3 flex items-center justify-between z-10">
           <h2 className="text-xl font-bold text-text-primary">Settings</h2>
           <button

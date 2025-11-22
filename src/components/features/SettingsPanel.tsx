@@ -5,7 +5,7 @@ export const SettingsPanel = () => {
   const { darkMode, toggleTheme, fontSize, setFontSize, languageMode, setLanguageMode } = useAppStore();
 
   return (
-    <div className="p-4 space-y-6">
+    <div className="p-4 space-y-6 glass">
       
       {/* Theme Toggle */}
       <div className="bg-bg-secondary p-4 rounded-xl flex items-center justify-between shadow-sm">
