@@ -1,91 +1,103 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&display=swap");
 
 @tailwind base;
-@tailwind components;
+/* Warm color palette */
+:root {
+  --color-text-primary: hsl(0, 0%, 95%);
+  --color-text-secondary: hsl(0, 0%, 70%);
+}
+
+/* Glassmorphism for modals and panels */
+.glass {
+  background: var(--color-bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  border-radius: 1rem;
+}
+
+/* Gradient background for app root */
+body {
+  background: linear-gradient(135deg, hsl(210, 30%, 12%), hsl(210, 30%, 18%));
+  color: var(--color-text-primary);
+}
+
+/* Keyframe animations */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseScale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Utility classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+/* Button micro‑animation */
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.btn-primary:hover {
+  background: hsl(210, 70%, 50%);
+  transform: scale(1.05);
+}
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Style Guide Theme: Orange, Black, White */
-    --bg-primary: #FFFFFF; /* Pure White */
-    --bg-secondary: #F5F5F5; /* Light Gray */
-    
-    --text-primary: #1A1A1A; /* Near Black */
-    --text-secondary: #666666; /* Mid Gray */
-    
-    --accent-primary: #FF6B00; /* Vibrant Orange */
-    --accent-secondary: #FF8533; /* Lighter Orange */
-    
-    --status-error: #FF3B30;
-    
-    /* Helper for glass/card if needed */
-    --color-primary: #FF6B00;
+    --bg-primary: #fdfbf7;
+    --bg-secondary: #f3efe5;
+    --text-primary: #2d2420;
+    --text-secondary: #5d5550;
+    --accent-primary: #8b4513;
+    --accent-secondary: #cd853f;
+    --status-error: #d32f2f;
   }
 
   .dark {
-    /* Dark Mode Adaptation */
-    --bg-primary: #000000; /* Pure Black */
-    --bg-secondary: #1C1C1E; /* Dark Gray */
-    
-    --text-primary: #FFFFFF;
-    --text-secondary: #8E8E93;
-    
-    --accent-primary: #FF8533; /* Lighter Orange */
-    --accent-secondary: #FF6B00;
-    
-    --status-error: #FF453A;
-    
-    --color-primary: #FF8533;
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-primary: #d2b48c;
+    --accent-secondary: #cd853f;
+    --status-error: #ef5350;
   }
 
   body {
     @apply bg-bg-primary text-text-primary font-english transition-colors duration-200;
-    background-image: none;
   }
 }
 
-/* Minimalist Card */
-.card {
-  @apply bg-white dark:bg-bg-secondary rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 transition-all duration-200;
-}
-.card:hover {
-  @apply shadow-md transform -translate-y-1;
-  border-color: var(--color-primary);
-}
-
-/* Clean Inputs */
-input[type="text"], input[type="search"] {
-  @apply bg-bg-secondary border-transparent focus:bg-white focus:border-accent-primary focus:ring-2 transition-all duration-200;
-  --tw-ring-color: rgba(255, 107, 0, 0.2); /* Manual opacity for ring */
-}
-
-/* Typography */
 .font-malayalam {
   font-family: 'Noto Sans Malayalam', sans-serif;
 }
+
 .font-english {
   font-family: "Inter", sans-serif;
 }
-.font-heading {
-  font-family: "Inter", sans-serif; /* Switch to Inter for cleaner look */
-  letter-spacing: -0.02em;
-}
 
-/* Utilities */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-/* Animations */
-.animate-fade-in-up {
-  animation: fadeInUp 0.3s ease-out forwards; /* Snappier animation */
-}
-
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
 }
