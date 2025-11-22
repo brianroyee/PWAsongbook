@@ -2,17 +2,41 @@
   {
     "id": 1,
     "number": "1",
-    "title_mal": "എല്ലാർക്കും നന്മകൾ",
-    "title_eng": "Ellarkkum Nanmakal",
+    "title_mal": "വാഴ്ത്തുക നീ മനമേ",
+    "title_eng": "Vazhthuka nee maname",
     "category": "Worship",
+    "chorus": {
+      "mal": "വാഴ്ത്തുക നീ മനമേ- എൻ പരനേ-\nവാഴ്ത്തുക നീ മനമേ-",
+      "eng": "Vazhthuka nee maname – en parane\nVazhthuka nee maname"
+    },
     "verses": [
       {
-        "mal": "എല്ലാർക്കും നന്മകൾ ചെയ്യുന്നവൻ\nഎല്ലാർക്കും നന്മകൾ ചെയ്യുന്നവൻ",
-        "eng": "Ellarkkum nanmakal cheyyunnavan\nEllarkkum nanmakal cheyyunnavan"
+        "mal": "വാഴ്ത്തുക തൻ ശുദ്ധനാമത്തെ പേർത്തു\nപർത്ഥിവൻ തന്നുപകാരത്തെയോർത്തു",
+        "eng": "Vazhthuka than sudha namathe perthu\nparthivan thannupakarathe orthu"
       },
       {
-        "mal": "നല്ലവൻ യേശു പരൻ - അതി\nനല്ലവൻ യേശു പരൻ",
-        "eng": "Nallavan yeshu paran - athi\nNallavan yeshu paran"
+        "mal": "നിന്നകൃത്യം പരനൊക്കെയും പോക്കി\nതിണ്ണമായ് രോഗങ്ങൾ നീക്കി നന്നാക്കി",
+        "eng": "Ninnakruthyam paranokeyum pokki\nthinnamai rogangal neeki nannakki"
+      },
+      {
+        "mal": "നന്മയാൽ വായ്കവൻ തൃപ്തിയെ തന്നു\nനവ്യമാക്കുന്നു നിൻ യൗവ്വനമിന്നു",
+        "eng": "Nanmayal vaaikavan thrupthiye thannu\nnavyamakkunnu nin yauvanaminnu"
+      },
+      {
+        "mal": "മക്കളിൽ കാരുണ്യം താതനെന്നോണം\nഭക്തരിൽ വാത്സല്ല്യവാനവൻ നൂനം",
+        "eng": "Makkalil karunnyam thathanennonam\nbhaktharil valsallya vanavan nunam"
+      },
+      {
+        "mal": "പുല്ലിനു തുല്ല്യമീ ജീവിതം വയലിൽ\nപൂവെന്ന പോലയ്യോ പോകുന്നു തുലവിൽ",
+        "eng": "Pullinu thullyamee jeevitham vayalil\npuvenna'polithu pokunnu thulakil"
+      },
+      {
+        "mal": "തൻ നിയമങ്ങളെ കാത്തിടുന്നോർക്കും\nതന്നുടെ ദാസർക്കും താൻ ദയ കാട്ടും",
+        "eng": "Than neeyamangale kaathidunnorkum\nthannude dhasarkum thaan daya kaakkum"
+      },
+      {
+        "mal": "നിത്യ രാജാവിവൻ ഓക്കുകിൽ സർവ്വ\nസൃഷ്ടികളും സ്തുതിക്കുന്ന യഹോവ",
+        "eng": "Nithya rajavivanorkukil sarva\nshrishtikalum sthuthikunna yehova"
       }
     ]
   },

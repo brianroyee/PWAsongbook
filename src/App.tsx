@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppShell } from './components/layout/AppShell';
 import { Home } from './pages/Home';
+import { Search } from './pages/Search';
 import { SongView } from './components/features/SongView';
 import { SettingsPanel } from './components/features/SettingsPanel';
 import { Favorites } from './pages/Favorites';
@@ -22,7 +23,7 @@ function App() {
         <Route path="/" element={<AppShell />}>
           <Route index element={<Home />} />
           <Route path="song/:id" element={<SongView />} />
-          <Route path="search" element={<div className="p-4">Search Page (Coming Soon)</div>} />
+          <Route path="search" element={<Search />} />
           <Route path="favorites" element={<Favorites />} />
           <Route path="settings" element={<SettingsPanel />} />
         </Route>

@@ -7,7 +7,7 @@ export const SongView = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const song = getSongById(Number(id));
-  const { fontSize, languageMode, setLanguageMode, favorites, toggleFavorite } = useAppStore();
+  const { fontSize, languageMode, favorites, toggleFavorite } = useAppStore();
 
   if (!song) return <div className="p-4 text-center">Song not found</div>;
 
@@ -18,12 +18,6 @@ export const SongView = () => {
   const showMal = languageMode === 'malayalam' || languageMode === 'both';
   const showEng = languageMode === 'manglish' || languageMode === 'both';
 
-  const cycleLanguage = () => {
-    if (languageMode === 'malayalam') setLanguageMode('both');
-    else if (languageMode === 'both') setLanguageMode('manglish');
-    else setLanguageMode('malayalam');
-  };
-
   return (
     <div className="pb-20 animate-in fade-in duration-300">
       {/* Custom Header for Song View - Overrides default header */}
@@ -32,17 +26,9 @@ export const SongView = () => {
           <ArrowLeft className="w-6 h-6 text-text-primary" />
         </button>
         <span className="font-bold text-lg text-text-primary">#{song.number}</span>
-        <div className="flex gap-2">
-          <button 
-            onClick={cycleLanguage} 
-            className="px-3 py-1 font-bold text-xs border border-accent-primary text-accent-primary rounded-full hover:bg-accent-primary hover:text-white transition-colors"
-          >
-            {languageMode === 'malayalam' ? 'MAL' : languageMode === 'manglish' ? 'ENG' : 'BOTH'}
-          </button>
-          <button onClick={() => toggleFavorite(song.id)} className="p-2 hover:bg-bg-secondary rounded-full transition-colors">
-            <Heart className={`w-6 h-6 transition-colors ${isFavorite ? 'fill-status-error text-status-error' : 'text-text-secondary'}`} />
-          </button>
-        </div>
+        <button onClick={() => toggleFavorite(song.id)} className="p-2 hover:bg-bg-secondary rounded-full transition-colors">
+          <Heart className={`w-6 h-6 transition-colors ${isFavorite ? 'fill-status-error text-status-error' : 'text-text-secondary'}`} />
+        </button>
       </div>
 
       <div className="mt-4 px-2 max-w-md mx-auto">
@@ -59,18 +45,18 @@ export const SongView = () => {
 
         <div className={`space-y-8 ${currentSize} leading-relaxed`}>
           {song.chorus && (
-            <div className="bg-bg-secondary/50 p-6 rounded-2xl border border-transparent dark:border-white/5">
-              <span className="text-xs text-accent-secondary font-bold uppercase tracking-wider mb-2 block">Chorus</span>
-              {showMal && <p className="font-malayalam font-bold mb-3 text-text-primary">{song.chorus.mal}</p>}
-              {showEng && <p className="font-english text-text-secondary opacity-90">{song.chorus.eng}</p>}
+            <div className="px-2">
+              <span className="text-xs text-accent-primary font-bold uppercase tracking-wider mb-2 block">Chorus</span>
+              {showMal && <p className="font-malayalam mb-2 text-text-primary whitespace-pre-line">{song.chorus.mal}</p>}
+              {showEng && <p className="font-english text-text-secondary opacity-80 whitespace-pre-line">{song.chorus.eng}</p>}
             </div>
           )}
 
           {song.verses.map((verse, idx) => (
             <div key={idx} className="px-2">
               <span className="text-xs text-text-secondary mb-2 block font-medium opacity-60">Verse {idx + 1}</span>
-              {showMal && <p className="font-malayalam mb-3 text-text-primary">{verse.mal}</p>}
-              {showEng && <p className="font-english text-text-secondary opacity-90">{verse.eng}</p>}
+              {showMal && <p className="font-malayalam mb-2 text-text-primary whitespace-pre-line">{verse.mal}</p>}
+              {showEng && <p className="font-english text-text-secondary opacity-80 whitespace-pre-line">{verse.eng}</p>}
             </div>
           ))}
         </div>
