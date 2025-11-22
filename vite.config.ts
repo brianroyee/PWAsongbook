@@ -7,12 +7,12 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+      includeAssets: ['favicon.svg', 'icon-512.png'],
       manifest: {
         name: 'EHBCK Songbook',
         short_name: 'EHBCK',
         description: 'EHBCK Malayalam Church Songbook PWA',
-        theme_color: '#FDFBF7',
+        theme_color: '#FF6B35',
         background_color: '#FDFBF7',
         display: 'standalone',
         scope: '/',
@@ -20,14 +20,10 @@ export default defineConfig({
         orientation: 'portrait',
         icons: [
           {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'pwa-512x512.png',
+            src: 'icon-512.png',
             sizes: '512x512',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
           }
         ]
       }

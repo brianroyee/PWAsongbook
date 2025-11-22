@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from './Header';
 import { BottomNav } from './BottomNav';
+import { InstallPrompt } from '../features/InstallPrompt';
 import { useTheme } from '../../hooks/useTheme';
 
 export const AppShell = () => {
@@ -13,6 +14,7 @@ export const AppShell = () => {
         <Outlet />
       </main>
       <BottomNav />
+      <InstallPrompt />
     </div>
   );
 };
