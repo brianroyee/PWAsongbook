@@ -1,14 +1,25 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { SongList } from '../components/features/SongList';
 import { useAppStore } from '../store/useAppStore';
 import { Search as SearchIcon } from 'lucide-react';
-
-const categories = ['All', 'Worship', 'Holy Spirit', 'Praise', 'Prayer', 'Thanksgiving'];
 
 export const Search = () => {
   const { songs } = useAppStore();
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+
+  // Derive categories from songs data, include an "All" option
+  const categories = useMemo(() => {
+    const set = new Set<string>();
+    set.add('All');
+    songs.forEach((song) => {
+      // Category strings may contain a Malayalam part and an English part separated by '|'
+      const parts = song.category.split('|').map((p) => p.trim());
+      const english = parts.length > 1 ? parts[1] : parts[0];
+      set.add(english);
+    });
+    return Array.from(set);
+  }, [songs]);
 
   const filteredSongs = songs.filter((song) => {
     const matchesQuery =
@@ -23,7 +34,9 @@ export const Search = () => {
       );
 
     const matchesCategory =
-      selectedCategory === 'All' || song.category === selectedCategory;
+      selectedCategory === 'All' ||
+      // Compare against the derived English category
+      (song.category.split('|').map((p) => p.trim())[1] ?? song.category) === selectedCategory;
 
     return matchesQuery && matchesCategory;
   });
