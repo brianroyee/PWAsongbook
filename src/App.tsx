@@ -7,12 +7,12 @@ import { SongView } from './components/features/SongView';
 import { Favorites } from './pages/Favorites';
 import { useAppStore } from './store/useAppStore';
 import { songs as localSongs } from './lib/songs';
+import { PageTransition } from './components/layout/PageTransition';
 
 function App() {
   const { setSongs } = useAppStore();
 
   useEffect(() => {
-    // Load songs from local data on mount
     setSongs(localSongs);
   }, [setSongs]);
 
@@ -20,10 +20,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<AppShell />}>
-          <Route index element={<Home />} />
-          <Route path="song/:id" element={<SongView />} />
-          <Route path="search" element={<Search />} />
-          <Route path="favorites" element={<Favorites />} />
+          <Route index element={<PageTransition><Home /></PageTransition>} />
+          <Route path="song/:id" element={<PageTransition><SongView /></PageTransition>} />
+          <Route path="search" element={<PageTransition><Search /></PageTransition>} />
+          <Route path="favorites" element={<PageTransition><Favorites /></PageTransition>} />
         </Route>
       </Routes>
     </BrowserRouter>

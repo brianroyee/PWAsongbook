@@ -1,14 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manjari:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&display=swap");
 
 @tailwind base;
-/* Modern design tokens */
+/* Warm color palette */
 :root {
-  --color-primary: hsl(210, 30%, 12%);
-  --color-secondary: hsl(210, 30%, 18%);
-  --color-accent: hsl(210, 70%, 55%);
-  --color-bg-primary: hsl(210, 30%, 10%);
-  --color-bg-secondary: hsl(210, 30%, 15%);
-  --color-bg-glass: hsla(210, 30%, 12%, 0.6);
   --color-text-primary: hsl(0, 0%, 95%);
   --color-text-secondary: hsl(0, 0%, 70%);
 }
