@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'icon-512.png'],
+      includeAssets: ['icon-512.png'],
       manifest: {
         name: 'EHBCK Songbook',
         short_name: 'EHBCK',

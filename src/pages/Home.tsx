@@ -27,14 +27,14 @@ export const Home = () => {
           />
         </div>
 
-        <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+        <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar mask-fade-right">
           {(['All', 'Malayalam', 'English'] as const).map((lang) => (
             <button
               key={lang}
               onClick={() => setSelectedLanguage(lang)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
+              className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-200 whitespace-nowrap active:scale-95 ${
                 selectedLanguage === lang
-                  ? 'bg-accent-primary text-white'
+                  ? 'bg-accent-primary text-white shadow-md shadow-accent-primary/20'
                   : 'bg-bg-secondary text-text-secondary hover:bg-gray-200 dark:hover:bg-gray-800'
               }`}
             >
