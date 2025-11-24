@@ -47,7 +47,7 @@
     "number": "2",
     "title_mal": "എന്നോടുള്ള നിൻ സർവ്വനന്മകൾക്കായി",
     "title_eng": "Ennodulla nin sarva nanmakalkkai",
-    "category": "സ്തോത്രം/Praise", 
+    "category": "സ്തോത്രം/Praise",
     "author": "Unknown",
     "language": "Malayalam",
     "verses": [
@@ -77,12 +77,90 @@
       }
     ]
   },
+
+  {
+  "id": 3,
+  "number": "3",
+  "title_mal": "യേശുവിന്റെ തിരുനാമത്തിനു എന്നെന്നും സ്തുതി",
+  "title_eng": "Yeshuvinte thiru naamathinu ennumenum sthuthi",
+  "category": "സ്തോത്രം/Praise",
+  "author": "M.E. Cherian",
+  "language": "Malayalam",
+  "chorus": {
+    "eng": "Yeshuvinte thiru naamathinu\nEnnumennum sthuthisthothrame",
+    "mal": "യേശുവിന്റെ തിരുനാമത്തിനു\nഎന്നുമെന്നും സ്തുതി സ്തോത്രമേ"
+  },
+  "verses": [
+    {
+      "eng": "Vaanilum bhoovilum melaaya Naamam\nVannitha vallabha naamamathu dhoother\nVazhthi pukashteedum naamamathu;-",
+      "mal": "വാനിലും ഭൂവിലും മേലായ നാമം\nവന്നിത വല്ലഭ നാമമതു ദൂതർ\nവാഴ്ത്തിപ്പുകഴ്ത്തീടും നാമമത്;-"
+    },
+    {
+      "eng": "Papathil jeevikkum papiye rekshippaan\nParithil vannoru namamathu-para\nLokathil cherkum naamamathu;-",
+      "mal": "പാപത്തിൽ ജീവിക്കും പാപിയെ രക്ഷിപ്പാൻ\nപരിതിൽ വന്നൊരു നാമമത്-പര\nലോകത്തിൽ ചേർക്കും നാമമത്;-"
+    },
+    {
+      "eng": "Uthama bhakthanmar padi pukzethedum\nUnnathamam daiva naamamathu-ula\nkengum dhwonikikkunna naamamathu;-",
+      "mal": "ഉത്തമഭക്തന്മാർ പടി പുകഴ്ത്തീടും\nഉന്നതാമാം ദൈവ നാമമതു-ഉല-\nകെങ്ങും ധ്വനിക്കുന്ന നാമമത്;-"
+    },
+    {
+      "eng": "Sankadam chanchalam shodhanavelayil\nThangi nadatheedum namamathu-bhayam\nMuttu’makattidum naamamathu;-",
+      "mal": "സങ്കടം ചഞ്ചലം ശോധനவேളയിൽ\nതാങ്ങി നടത്തീടും നാമമതു-ഭയം\nമുട്ടും മകട്ടീടും നാമമത്;-"
+    }
+  ]
+},
+
+  {
+  "id": 4,
+  "number": "4",
+  "title_mal": "യേശുനാഥാ നിൻ കൃപയ്ക്കായ് സ്തോത്ര",
+  "title_eng": "Yeshu natha nin krupaykkay sthothrame",
+  "author": "K.V. Simon",
+  "category": "സ്തോത്രം/Praise",
+  "language": "Malayalam",
+  "chorus": {
+    "eng": "Yeshu natha nin krupaykkay sthothramennekkum\nIeshane nin namamente kleshamakattum",
+    "mal": "യേശുനാഥാ നിൻ കൃപയ്ക്കായ് സ്തോത്രമേന്നേക്കും\nഈശനെ നിൻ നാമമെന്തോ ക്ളേശമകട്ടും"
+  },
+  "verses": [
+    {
+      "eng": "Naashamayanaayorennil Jeevanarulaan–van\nKrooshine sahichapa– maanam vahichru;- Yeshu",
+      "mal": "നാശമായയോരെന്നിൽ ജീവനരുളാൻ വൻ\nകൃൂശിനെ സഹിച്ചപ-മാനം വഹിച്ചു;-"
+    },
+    {
+      "eng": "Paavanamaan neethiyil nja-nennumirippaan –ninte\nJeevaniloramshameni-kkeyiyathinaal;- Yeshu",
+      "mal": "പാവനമാന നീതിയിൽ ഞാനെന്നുമിരിപ്പാൻ നിൻറെ\nജീവനിലോരാംശമെനിക്ക്േയിയതിനാൽ;-"
+    },
+    {
+      "eng": "Nin hrudhayum thannilenne munkurrichappol\nEn jananam thanneymu njaa nannarinjille;- Yeshu",
+      "mal": "നിൻ ഹൃദയം തന്നിലെനം മുകുറ്റിച്ചപ്പോള്‍\nഎൻ ജനനം താന്നെയം ഞാ നന്ദറിഞ്ഞില്ലേ;-"
+    },
+    {
+      "eng": "Than jada shareera maranam nimitham nee\nNin pithaaovtenne nirappichathu moolam;- Yeshu",
+      "mal": "തൻ ജഡ ശരീര മರಣം നിമിത്തം നീ\nനിൻ പിതാവൊതെന്നെ നിറപ്പിച്ചതു മൂലം;-"
+    },
+    {
+      "eng": "Ethrakaalam nin krupaye vyardhamaakki njaan\nAthranaahiumandhakaaram- thannilirunnen;- Yeshu",
+      "mal": "എത്രകാലം നിൻ കൃപയെ വ്യർത്ഥമാക്കി ഞാ-\nഅത്രനാളുംഅന്ധകാരം തണ്ണിലിരുന്നേ;-"
+    },
+    {
+      "eng": "Jeeva'lathayaaya ninnil njaan nila nilppaan-nin\nJeeva resa mennilenum thannu paalikka;- Yeshu",
+      "mal": "ജീവലതയായ നിൻനിൽ ഞാന് നിൽക്കുവാൻ നിൻ\nജീവരസ മെനിലെനും തന്ന് പാലിക്ക;-"
+    },
+    {
+      "eng": "Vishranna dhestaleee njaa-nethum varekkum-nin\nVishrutha krupakal enne pinthutharenam;- Yeshu",
+      "mal": "വിശ്രണ ദേശത്തിലീ ഞാനേതും വരെക്കും നിൻറെ\nവിശുദ്ധ കൃപകൾ എന്നെ പിന്തുടരേണമേ;-"
+    }
+  ]
+},
+
+
   {
     "id": 839,
     "number": "839",
     "title_mal": "യാഹ് നല്ല ഇടയൻ",
     "title_eng": "yah nalla idayan",
-    "category": "ആശ്രയം | Hope",
+    "category": "ആശ്രയം/Hope",
     "author": "Unknown",
     "language": "Malayalam",
     "chorus": {
@@ -109,30 +187,30 @@
     ]
   },
   {
-  "id": 557,
-  "number": "557",
-  "title_eng": "Ethra nallavan yeshuparan",
-  "title_mal": "എത്ര നല്ലവനേശുപരൻ",
-  "category": "സ്തോത്രം/Praise",
-  "author": "Unknown",
-  "language": "Malayalam",
-  "chorus": {
-    "eng": "Ethra nallavan yeshuparan\nMithra’manenikennuman\n\nNin thiru’chirakin marvel njanennum\nNir’bhayamai vasikum\nEthoru kedam varikilum ente\nYeshuvil charidum njan",
-    "mal": "എത്ര നല്ലവനേശുപരൻ\nമിത്രമാണെനിക്കെന്നുമവൻ\n\nതൻതിരുചിറകിൻ മറവിൽ\nഞാനെന്നും നിർഭയമായ് വസിക്കും \nഏതൊരു ഖേദവും വരികിലും എന്റെ\nയേശുവിൽ ചാരിടും ഞാൻ"
-  },
-  "verses": [
-    {
-      "eng": "Enne karangalil vahichidum than\n  Ente kannuneer thudachidum than\n  Kurirul mudumen jeevitha’vaziyil\n  Anugrhamay nadathum",
-      "mal": "എന്നെ കരങ്ങളിൽ വഹിച്ചിടും താൻ\nഎന്റെ കണ്ണുനീർ തുടച്ചിടും താൻ\nകാരിരുൾ മൂടുമെൻ ജീവിതവഴിയിൽ\nഅനുഗ്രഹമായ് നടത്തും"
+    "id": 557,
+    "number": "557",
+    "title_eng": "Ethra nallavan yeshuparan",
+    "title_mal": "എത്ര നല്ലവനേശുപരൻ",
+    "category": "സ്തോത്രം/Praise",
+    "author": "Unknown",
+    "language": "Malayalam",
+    "chorus": {
+      "eng": "Ethra nallavan yeshuparan\nMithra’manenikennuman\n\nNin thiru’chirakin marvel njanennum\nNir’bhayamai vasikum\nEthoru kedam varikilum ente\nYeshuvil charidum njan",
+      "mal": "എത്ര നല്ലവനേശുപരൻ\nമിത്രമാണെനിക്കെന്നുമവൻ\n\nതൻതിരുചിറകിൻ മറവിൽ\nഞാനെന്നും നിർഭയമായ് വസിക്കും \nഏതൊരു ഖേദവും വരികിലും എന്റെ\nയേശുവിൽ ചാരിടും ഞാൻ"
     },
-    {
-      "eng": "Enne vilichaven viswasthanam\n  Ennum Maratha valla’bhanam\n  Inne’enikka’kayal’akulamilla\n  Mannaven’en thunayam",
-      "mal": "എന്നെ വിളിച്ചവൻ വിശ്വസ്തനാം\nഎന്നും മാറാത്ത വല്ലഭനാം\nഇന്നെനിക്കാകയാലാകുലമില്ല\nമന്നവനെൻ തുണയാം"
-    },
-    {
-      "eng": "Loka’sukangale thyegichidum njan\n  Sneha’nathane anugamikum\n  Nindakal sahichum jevane pakachum\n  Poruthu’menna’yussellam",
-      "mal": "ലോകസുഖങ്ങളെ ത്യജിച്ചിടും ഞാൻ\nസ്നേഹനാഥനെ അനുഗമിക്കും\nനിന്ദകൾ സഹിച്ചും ജീവനെ പകച്ചും\nപൊരുതുമെന്നായുസ്സെല്ലാം"
-    }
-  ]
-}
+    "verses": [
+      {
+        "eng": "Enne karangalil vahichidum than\n  Ente kannuneer thudachidum than\n  Kurirul mudumen jeevitha’vaziyil\n  Anugrhamay nadathum",
+        "mal": "എന്നെ കരങ്ങളിൽ വഹിച്ചിടും താൻ\nഎന്റെ കണ്ണുനീർ തുടച്ചിടും താൻ\nകാരിരുൾ മൂടുമെൻ ജീവിതവഴിയിൽ\nഅനുഗ്രഹമായ് നടത്തും"
+      },
+      {
+        "eng": "Enne vilichaven viswasthanam\n  Ennum Maratha valla’bhanam\n  Inne’enikka’kayal’akulamilla\n  Mannaven’en thunayam",
+        "mal": "എന്നെ വിളിച്ചവൻ വിശ്വസ്തനാം\nഎന്നും മാറാത്ത വല്ലഭനാം\nഇന്നെനിക്കാകയാലാകുലമില്ല\nമന്നവനെൻ തുണയാം"
+      },
+      {
+        "eng": "Loka’sukangale thyegichidum njan\n  Sneha’nathane anugamikum\n  Nindakal sahichum jevane pakachum\n  Poruthu’menna’yussellam",
+        "mal": "ലോകസുഖങ്ങളെ ത്യജിച്ചിടും ഞാൻ\nസ്നേഹനാഥനെ അനുഗമിക്കും\nനിന്ദകൾ സഹിച്ചും ജീവനെ പകച്ചും\nപൊരുതുമെന്നായുസ്സെല്ലാം"
+      }
+    ]
+  }
 ]

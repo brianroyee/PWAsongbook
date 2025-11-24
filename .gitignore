@@ -38,3 +38,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+import_songs.cjs
+songs_to_import.txt
+
