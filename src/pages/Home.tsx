@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { SongList } from '../components/features/SongList';
 import { searchSongs } from '../lib/songs';
 import { Search } from 'lucide-react';
+import { useExitConfirmation } from '../hooks/useExitConfirmation';
+import { ExitModal } from '../components/ui/ExitModal';
 
 export const Home = () => {
   const [query, setQuery] = useState('');
@@ -12,6 +14,8 @@ export const Home = () => {
     if (selectedLanguage === 'All') return true;
     return song.language === selectedLanguage || !song.language; // Show if matches or undefined (legacy)
   });
+
+  const { showExitModal, handleCancelExit, handleConfirmExit } = useExitConfirmation();
 
   return (
     <div className="space-y-6">
@@ -45,6 +49,12 @@ export const Home = () => {
       </div>
 
       <SongList songs={filteredSongs} />
+
+      <ExitModal 
+        isOpen={showExitModal} 
+        onCancel={handleCancelExit} 
+        onConfirm={handleConfirmExit} 
+      />
     </div>
   );
 };
