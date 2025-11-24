@@ -25,6 +25,11 @@ export const SongList = ({ songs }: SongListProps) => {
               <p className="text-sm text-text-secondary truncate font-english">
                 {song.title_eng}
               </p>
+              {song.author && (
+                <p className="text-xs text-text-secondary/60 mt-1 font-english">
+                  {song.author}
+                </p>
+              )}
             </div>
           </div>
         </Link>

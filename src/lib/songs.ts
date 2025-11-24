@@ -7,6 +7,8 @@ export interface Song {
   title_mal: string;
   title_eng: string;
   category: string;
+  author?: string;
+  language?: string;
   verses: {
     mal: string;
     eng: string;

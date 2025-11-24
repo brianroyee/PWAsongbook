@@ -38,9 +38,15 @@ export const SongView = () => {
           </h1>
         )}
         {showEng && (
-          <h2 className={`text-lg text-center mb-8 text-text-secondary font-english ${!showMal ? 'text-2xl font-bold text-accent-primary' : ''}`}>
+          <h2 className={`text-lg text-center mb-2 text-text-secondary font-english ${!showMal ? 'text-2xl font-bold text-accent-primary' : ''}`}>
             {song.title_eng}
           </h2>
+        )}
+        
+        {song.author && (
+          <p className="text-center text-sm text-text-secondary/60 mb-8 font-english italic">
+            Written by {song.author}
+          </p>
         )}
 
         <div className={`space-y-8 ${currentSize} leading-relaxed`}>
