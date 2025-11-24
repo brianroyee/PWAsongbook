@@ -9,37 +9,44 @@ export const useExitConfirmation = (shouldConfirm: boolean = true) => {
   useEffect(() => {
     if (!shouldConfirm) return;
 
-    // Push a dummy state to history to intercept the back button
-    // This creates a "trap" so the first back button press stays in the app
-    window.history.pushState(null, '', window.location.pathname);
+    console.log('useExitConfirmation: mounted/updated', location.pathname);
+
+    // Only push the trap if we are not already in it
+    // We use a specific state identifier
+    if (window.history.state?.type !== 'exit-trap') {
+      console.log('useExitConfirmation: Pushing exit trap');
+      window.history.pushState({ type: 'exit-trap' }, '', window.location.pathname);
+    }
 
     const handlePopState = (event: PopStateEvent) => {
-      // Prevent default back action (browser already did it, we just react)
+      console.log('useExitConfirmation: popstate detected', event.state);
+      // If the user pressed back, they are leaving the trap state.
+      // We show the modal.
       event.preventDefault();
-      
-      // Show the modal
       setShowExitModal(true);
     };
 
     window.addEventListener('popstate', handlePopState);
 
     return () => {
+      console.log('useExitConfirmation: cleanup');
       window.removeEventListener('popstate', handlePopState);
     };
   }, [shouldConfirm, location.pathname]);
 
   const handleCancelExit = () => {
+    console.log('useExitConfirmation: Cancel exit, restoring trap');
     setShowExitModal(false);
-    // Restore the trap by pushing state again
-    window.history.pushState(null, '', window.location.pathname);
+    // Restore the trap
+    window.history.pushState({ type: 'exit-trap' }, '', window.location.pathname);
   };
 
   const handleConfirmExit = () => {
+    console.log('useExitConfirmation: Confirm exit');
     setShowExitModal(false);
-    // Go back twice: once for the trap we pushed, and once to actually exit
-    // Wait, popstate already took us back once (removing the trap).
-    // So we just need to go back one more time to exit.
-    navigate(-1); 
+    // We are currently at the "pre-trap" state (because popstate happened).
+    // To exit, we need to go back one more time.
+    navigate(-1);
   };
 
   return {
