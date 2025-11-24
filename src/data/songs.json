@@ -154,6 +154,45 @@
   ]
 },
 
+{
+  "id": 5,
+  "number": "5",
+  "title_eng": "Kristhuvin Naamathe Sthuthikka",
+  "title_mal": "ക്രിസ്തുവിൻ നാമത്തെ സ്തുതിക്ക നാം ദിനവും",
+  "author": "K. V. Simon",
+  "category": "ആശ്രയം | Hope",
+  "chorus": {
+    "mal": "ക്രിസ്തുവിൻ നാമത്തെ സ്തുതിക്ക നാം ദിനവും\nസ്തുതിക്ക നാം ദിനവും — സ്തുതിക്ക നാം ദിനവും.",
+    "eng": "kristhuvin naamathe sthuthikka naam dinavum\nsthuthikka naam dinavum — sthuthika naam dinavum."
+  },
+  "verses": [
+    {
+      "verse_no": 1,
+      "mal": "ശത്രുവിൻ ശക്തി ബലതെയും തകര്‍ത്ത്\nനിത്യാമാം ജീവനിലെത്തുന്നതുണവനാം;",
+      "eng": "shathruvin sakala balathayum thakarthu\nnithyamam jeevaniluyarthezhuvanavaam"
+    },
+    {
+      "verse_no": 2,
+      "mal": "കരുണയിൻ ഭുജതിൻ ബലതാലിനരരെ\nദുരിതങ്ങള്‍ നീക്കി പരിപാലിച്ചിടുന്ന;",
+      "eng": "karunayin bhujathin balathaalinarare\ndurithangal neeki paripaalichidunna"
+    },
+    {
+      "verse_no": 3,
+      "mal": "പാപത്തിന്‍ ഭാരത്തില്‍ വലയുന്ന ജനങ്ങള്‍\nദൈവത്തോടനുയോജ്യ മാര്‍ഗം തുണന്നവനാം;",
+      "eng": "paapathin bhaarathal valayunna janangal\ndaivathodanuyuvan vazhi thurannavanam"
+    },
+    {
+      "verse_no": 4,
+      "mal": "നാ‍ദരെ നാം ഇന്നു സ്തുതിപ്പതു കേട്ട്\nമോദമോദവന്‍ ദേഹസേവരുമരിവാന്‍;",
+      "eng": "naadane naam innu sthutipathu kett\nmodamodavan dhejusevarumarivan"
+    },
+    {
+      "verse_no": 5,
+      "mal": "പാവന സുവിശേഷ പദവികളെങ്കും\nകേവലമരിഞ്ഞേശ പാദതലില്‍ വണങ്ങാന്‍",
+      "eng": "paavana suvisesha padavikalengum\nkevalamarinjeesha padathalil vanangaan"
+    }
+  ]
+},
 
   {
     "id": 839,
